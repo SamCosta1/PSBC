@@ -1,2 +1,2 @@
-function isLucky (mihhh)    primesFactors = factor(mihhh);  if (numel(primesFactors) == numel(unique(primesFactors)))     true;  endif   false;
+function result = isLucky(value)    if (mod(value, 2) == 0)    result = false;    return;  endif    primeFactors = factor(value);    numPrimeFactors = numel(primeFactors);  if (numPrimeFactors != 1 && numPrimeFactors == numel(unique(primeFactors)))          result = true;     for factor = primeFactors        if (mod(value - 1, factor - 1) != 0)           result = false;           break;        endif     endfor       else    result = false;  endif    result;
 endfunction
