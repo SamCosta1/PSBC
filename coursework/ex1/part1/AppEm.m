@@ -11,11 +11,14 @@ function [p, q] = AppEm (N)
   currentBestDiff = intmax;
   currentBestPQ = [0, 0];
   
+  totCount = 0;
+  updates = 0;
   for p = 1:N
     lowerBound = ceil(5*p/3);
     upperBound = min(2*p, N - p);
     
     for q = lowerBound:upperBound
+      totCount = totCount + 1;
       approximation = p / q;
      
       diffToEM = absDiff(approximation);
@@ -23,6 +26,7 @@ function [p, q] = AppEm (N)
       if (diffToEM <= currentBestDiff)
         
         if (diffToEM < currentBestDiff || p + q < sum(currentBestPQ))
+          updates = updates + 1;
           currentBestDiff = diffToEM;
           currentBestPQ = [p, q];
         endif
@@ -35,4 +39,6 @@ function [p, q] = AppEm (N)
   q =  currentBestPQ(2);
 
 
+  totCount
+  updates
 endfunction
