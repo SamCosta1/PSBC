@@ -1,3 +1,0 @@
- ##360322019for i = 11826:30384  square = i^2;    squareAsString = num2str(square);  isPerfect = true;  for char=1:numel(squareAsString)    if (squareAsString(char) == '0')      isPerfect = false;      break;    endif  endfor    if (numel(squareAsString) != numel(unique(squareAsString)))     isPerfect = false;  endif    if (isPerfect)     display(squareAsString)  endif  
-endfor
-
