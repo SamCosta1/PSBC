@@ -1,3 +1,3 @@
-function result = perfectNumberNearest(N, lowerBound, upperBound)    closest = lowerBound;  minDiff = N - lowerBound^2;  for i = lowerBound:upperBound    square = i^2;        if (isPerfect(square))       diff = abs(N - square);      if (diff < minDiff)        closest = i;        minDiff =  diff;       endif    endif    
-    endfor        result = closest;
+function result = perfectNumberNearest(N, knownClosest)    currentDiff = abs(N - knownClosest ^ 2);  lowerBound = sqrt(max(1, N - currentDiff))  upperBound = sqrt(N + currentDiff)    current = floor(lowerBound);  currentBest = knownClosest;  while (current >= lowerBound && current <= upperBound)    current = current + 1;            square = current^2;        if (isPerfect(square))      diff = abs(N - square);      if (diff < currentDiff)        currentDiff =  diff;        currentBest = current;        upperBound = sqrt(N + currentDiff);        count = count+1;      endif    endif       
+  endwhile    result = currentBest;
 endfunction
