@@ -8,16 +8,22 @@ function [p, q] = AppEm (N)
   endif
     absDiff = @(value) abs(value - emConstant);
 
-  currentBestDiff = intmax;
+  currentBestDiff = 1;
   currentBestPQ = [0, 0];
-  
+    
   totCount = 0;
   updates = 0;
   for p = 1:N
-    lowerBound = ceil(5*p/3);
-    upperBound = min(2*p, N - p);
     
-    for q = lowerBound:upperBound
+    if (p == 1) 
+      qMin = 1
+      qMax = N
+    else
+      qMin = ceil(p / (emConstant + currentBestDiff));
+      qMax = min(floor(p / (emConstant - currentBestDiff)), N - p);
+    endif
+
+    for q = qMin:qMax
       totCount = totCount + 1;
       approximation = p / q;
      
@@ -27,8 +33,10 @@ function [p, q] = AppEm (N)
         
         if (diffToEM < currentBestDiff || p + q < sum(currentBestPQ))
           updates = updates + 1;
+          
           currentBestDiff = diffToEM;
           currentBestPQ = [p, q];
+          
         endif
       endif
       
