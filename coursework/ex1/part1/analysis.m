@@ -1,0 +1,2 @@
+times = [];timesBruteForce = []itrs = 100for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];    tic();  AppEmNaive(i);  timesBruteForce = [timesBruteForce, toc()];  
+endforplot(times);  hold on;plot(timesBruteForce);hold off;

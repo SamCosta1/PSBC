@@ -1,0 +1,1 @@
+function counter = collatz(N)%% For input positive integer N, return of the number of steps, such that "1" first appears  counter = 0;   n = N;  while (n != 1)    counter = counter + 1;    if (mod(n, 2) == 0)      n = n / 2;    else      n = 3*n + 1;    endif  endwhileend

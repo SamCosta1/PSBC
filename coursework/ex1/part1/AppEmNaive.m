@@ -1,4 +1,4 @@
-function [p, q] = AppEm (N)
+function [p, q] = AppEmNaive (N)
   emConstant = 0.577215664901533;
 
   if (N == 2)
@@ -11,28 +11,18 @@ function [p, q] = AppEm (N)
   currentBestDiff = 1;
   currentBestPQ = [0, 0];
     
-  totCount = 0;
-  updates = 0;
-  for p = 1:N
-    
-    if (p == 1) 
-      qMin = 1;
-      qMax = N;
-    else
-      qMin = ceil(p / (emConstant + currentBestDiff));
-      qMax = min(floor(p / (emConstant - currentBestDiff)), N - p);
-    endif
-
-    for q = qMin:qMax
-      totCount = totCount + 1;
+  
+  for p = 1:N   
+   
+    for q = 1:N
+      
       approximation = p / q;
      
       diffToEM = absDiff(approximation);
 
       if (diffToEM < currentBestDiff)
         currentBestDiff = diffToEM;
-        currentBestPQ = [p, q];
-        
+        currentBestPQ = [p, q];        
       endif
     
     endfor
