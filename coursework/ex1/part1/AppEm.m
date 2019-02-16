@@ -1,38 +1,34 @@
 function [p, q] = AppEm (N)
   emConstant = 0.577215664901533;
 
+  % Check for the trivial case early to allow assumptions to be made later
   if (N == 2)
     p = 1;
     q = 1;
     return;
   endif
-    absDiff = @(value) abs(value - emConstant);
+  
+  % Helper function forgiving the difference between any value and the emConstant  absDiff = @(value) abs(value - emConstant);
 
-  currentBestDiff = 1;
-  currentBestPQ = [0, 0];
+  % Since we're not in the trivial case of N = 2. The first value of the best diff
+  % will always be 1/2, we don't waste time calculating it but use it as the initial value
+  currentBestDiff = absDiff(1, 2);
+  currentBestPQ = [1, 2];
     
-  totCount = 0;
-  updates = 0;
-  for p = 1:N
-    
-    if (p == 1) 
-      qMin = 1;
-      qMax = N;
-    else
-      qMin = ceil(p / (emConstant + currentBestDiff));
-      qMax = min(floor(p / (emConstant - currentBestDiff)), N - p);
-    endif
+  % Start q off as 2 since we already accounted for q = 1
+  for q = 2:ceil(2*N / 3)
+ 
+     pMax = min(floor(q * (emConstant + currentBestDiff)), N - q);
+     pMin = ceil(q * (emConstant - currentBestDiff));
 
-    for q = qMin:qMax
-      totCount = totCount + 1;
+    for p = pMin:pMax
       approximation = p / q;
      
       diffToEM = absDiff(approximation);
 
       if (diffToEM < currentBestDiff)
         currentBestDiff = diffToEM;
-        currentBestPQ = [p, q];
-        
+        currentBestPQ = [p, q];        
       endif
     
     endfor
