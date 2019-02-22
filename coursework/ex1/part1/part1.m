@@ -1,1 +1,1 @@
-tic();[p, q] = AppEm(2019);elapsed = toc();elapsedpq
+tic();[p, q] = davis(50000);elapsed = toc();elapsedpq

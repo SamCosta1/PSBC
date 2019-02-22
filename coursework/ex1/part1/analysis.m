@@ -1,2 +1,2 @@
-times = [];timesBruteForce = []itrs = 1000for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];  ##  tic();##  AppEmNaive(i);##  timesBruteForce = [timesBruteForce, toc()];  
-endforlogs = [1:itrs] .* 0.00002;plot(times);  hold on;plot(logs);##plot(timesBruteForce);set(gca,'FontSize',20)hold off;
+times = [];timesBruteForce = []itrs = 100for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];    tic();  AppEmNaive(i);  timesBruteForce = [timesBruteForce, toc()];  
+endforplot(times);  hold on;plot(timesBruteForce);set(gca,'FontSize',20)hold off;

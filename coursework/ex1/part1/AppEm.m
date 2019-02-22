@@ -38,7 +38,7 @@ function [p, q, opsCount] = AppEm (N)
         currentBestPQ = [p, q];     
         
         % Recalculate the maximal value of q
-        qMax = ceil(N / (emConstant - currentBestDiff + 1))
+        qMax = ceil(N / (emConstant - currentBestDiff + 1));
       endif
 
       opsCount = opsCount + 1;
