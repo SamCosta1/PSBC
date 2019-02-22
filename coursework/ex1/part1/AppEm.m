@@ -1,4 +1,4 @@
-function [p, q, opsCount] = AppEm (N)
+function [p, q] = AppEm (N)
   emConstant = 0.577215664901533;
   opsCount = 0;
   
@@ -27,7 +27,6 @@ function [p, q, opsCount] = AppEm (N)
     pMax = min(floor(q * (emConstant + currentBestDiff)), N - q);
     pMin = ceil(q * (emConstant - currentBestDiff));
 
-    opsCount = opsCount + 1;
     for p = pMin:pMax
 
       diffToEM = absDiff(p / q);
@@ -38,10 +37,10 @@ function [p, q, opsCount] = AppEm (N)
         currentBestPQ = [p, q];     
         
         % Recalculate the maximal value of q
-        qMax = ceil(N / (emConstant - currentBestDiff + 1));
+        qMax = ceil(N / (emConstant - currentBestDiff + 1))
+       
       endif
 
-      opsCount = opsCount + 1;
     endfor
 
     q = q + 1;

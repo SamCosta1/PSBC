@@ -1,0 +1,3 @@
+function n = perfectNearest(N)   rootN = round(sqrt(N));    if (isPerfect(N))    n = rootN;    return;  endif      currentOffset = 0;  found = false;    while (!found)        perfects = [];        for multiplier = [-1 1]      currentSquared = (rootN + multiplier * currentOffset) ^ 2;            if (isPerfect(currentSquared))        perfects = [perfects, currentSquared];      endif    endfor        [delta, index] = min(abs(N - perfects));        if (index > 0)      n = sqrt(perfects(index));      found = true;    endif        currentOffset = currentOffset + 1;  endwhile  
+endfunction
+
