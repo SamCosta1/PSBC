@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  23 FEB 2019 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  23 FEB 2019 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,23 +6,28 @@ entering extended mode
 (./report.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count87
+\c@@ppsavesec=\count88
+\c@@ppsaveapp=\count89
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -55,13 +60,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count88
+\inf@bad=\count90
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count89
-\leftroot@=\count90
+\uproot@=\count91
+\leftroot@=\count92
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count91
-\DOTSCASE@=\count92
+\classnum@=\count93
+\DOTSCASE@=\count94
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -70,15 +75,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen105
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count93
-\c@MaxMatrixCols=\count94
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
 \dotsspace@=\muskip10
-\c@parentequation=\count95
-\dspbrk@lvl=\count96
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
 \tag@help=\toks16
-\row@=\count97
-\column@=\count98
-\maxfields@=\count99
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
 \andhelp@=\toks17
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
@@ -115,7 +120,7 @@ Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count100
+\Gread@gobject=\count102
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
@@ -132,23 +137,23 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks20
 )
-\lst@mode=\count101
+\lst@mode=\count103
 \lst@gtempboxa=\box28
 \lst@token=\toks21
-\lst@length=\count102
+\lst@length=\count104
 \lst@currlwidth=\dimen112
-\lst@column=\count103
-\lst@pos=\count104
+\lst@column=\count105
+\lst@pos=\count106
 \lst@lostspace=\dimen113
 \lst@width=\dimen114
-\lst@newlines=\count105
-\lst@lineno=\count106
+\lst@newlines=\count107
+\lst@lineno=\count108
 \lst@maxwidth=\dimen115
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count107
-\lst@skipnumbers=\count108
+\c@lstnumber=\count109
+\lst@skipnumbers=\count110
 \lst@framebox=\box29
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.cfg
@@ -270,37 +275,37 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    ... okay on input line 14.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
+\scratchcounter=\count111
 \scratchdimen=\dimen118
 \scratchbox=\box31
-\nofMPsegments=\count110
-\nofMParguments=\count111
+\nofMPsegments=\count112
+\nofMParguments=\count113
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count112
+\MPscratchCnt=\count114
 \MPscratchDim=\dimen119
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
+\MPnumerator=\count115
+\makeMPintoPDFobject=\count116
 \everyMPtoPDFconversion=\toks25
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -351,13 +356,13 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count115
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+\c@lstlisting=\count117
+LaTeX Font Info:    Try loading font information for U+msa on input line 22.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 22.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -380,15 +385,15 @@ LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 ) [3])
 Package epstopdf Info: Source file: <bruteforce_vs_better.eps>
-(epstopdf)                    date: 2019-02-23 14:15:42
-(epstopdf)                    size: 18932 bytes
+(epstopdf)                    date: 2019-02-23 16:04:15
+(epstopdf)                    size: 18743 bytes
 (epstopdf)             Output file: <bruteforce_vs_better-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2019-02-23 14:15:57
-(epstopdf)                    size: 10546 bytes
+(epstopdf)                    date: 2019-02-23 16:04:24
+(epstopdf)                    size: 10457 bytes
 (epstopdf)             Command: <repstopdf --outfile=bruteforce_vs_better-eps-c
 onverted-to.pdf bruteforce_vs_better.eps>
-(epstopdf)             \includegraphics on input line 100.
+(epstopdf)             \includegraphics on input line 101.
 Package epstopdf Info: Output file is already uptodate.
 
 <bruteforce_vs_better-eps-converted-to.pdf, id=25, 578.16pt x 433.62pt>
@@ -396,71 +401,102 @@ File: bruteforce_vs_better-eps-converted-to.pdf Graphic file (type pdf)
 
 <use bruteforce_vs_better-eps-converted-to.pdf>
 Package pdftex.def Info: bruteforce_vs_better-eps-converted-to.pdf used on inpu
-t line 100.
+t line 101.
 (pdftex.def)             Requested size: 346.89867pt x 260.17401pt.
 
-Overfull \hbox (1.89867pt too wide) in paragraph at lines 100--101
+Overfull \hbox (1.89867pt too wide) in paragraph at lines 101--102
 [][] 
  []
 
 [4] [5 <./bruteforce_vs_better-eps-converted-to.pdf>] (../part1/part1.m)
 
-LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 123.
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 124.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
-[6] (../part2/luckynum.m) [7]
-Underfull \hbox (badness 1789) in paragraph at lines 169--171
+[6] (../part2/luckynum.m) [7] (../part2/isLucky.m
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 17.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+) [8]
+Package epstopdf Info: Source file: <islucky_test.eps>
+(epstopdf)                    date: 2019-02-23 16:08:51
+(epstopdf)                    size: 11819 bytes
+(epstopdf)             Output file: <islucky_test-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-02-23 16:08:55
+(epstopdf)                    size: 8059 bytes
+(epstopdf)             Command: <repstopdf --outfile=islucky_test-eps-converted
+-to.pdf islucky_test.eps>
+(epstopdf)             \includegraphics on input line 201.
+Package epstopdf Info: Output file is already uptodate.
+
+<islucky_test-eps-converted-to.pdf, id=50, 578.16pt x 433.62pt>
+File: islucky_test-eps-converted-to.pdf Graphic file (type pdf)
+
+<use islucky_test-eps-converted-to.pdf>
+Package pdftex.def Info: islucky_test-eps-converted-to.pdf used on input line 2
+01.
+(pdftex.def)             Requested size: 346.89867pt x 260.17401pt.
+
+Overfull \hbox (1.89867pt too wide) in paragraph at lines 201--202
+[][] 
+ []
+
+[9 <./islucky_test-eps-converted-to.pdf>] (../part2/isLuckyAlternative.m)
+Underfull \hbox (badness 1789) in paragraph at lines 225--227
 []\OT1/cmr/m/n/10 Weisstein, Eric W. "Euler-Mascheroni Con-stant." From MathWor
 ld--
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--171
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
 \OT1/cmr/m/n/10 A Wol-fram Web Re-source. http://mathworld.wolfram.com/Euler-
  []
 
 
-Underfull \hbox (badness 5189) in paragraph at lines 173--175
+Underfull \hbox (badness 5189) in paragraph at lines 229--231
 \OT1/cmr/m/n/10 Web Re-source. http://mathworld.wolfram.com/CarmichaelNumber.ht
 ml
  []
 
-[8
-
-] (./report.aux) ) 
+[10] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 4754 strings out of 492995
- 65238 string characters out of 6132705
- 199270 words of memory out of 5000000
- 8220 multiletter control sequences out of 15000+600000
- 10382 words of font info for 39 fonts, out of 8000000 for 9000
+ 4881 strings out of 492995
+ 67285 string characters out of 6132705
+ 200296 words of memory out of 5000000
+ 8333 multiletter control sequences out of 15000+600000
+ 10032 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,9n,42p,463b,1548s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/
-cm-super-ts1.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.en
-c}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/loca
-l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
-exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/te
-xlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (8 pages, 182202 bytes).
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-sup
+er/cm-super-ts1.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r
+.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
+fb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
+live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
+ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texli
+ve/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/tex
+live/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on report.pdf (10 pages, 200883 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

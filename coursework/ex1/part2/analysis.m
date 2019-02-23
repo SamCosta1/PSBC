@@ -1,0 +1,2 @@
+range = [1:2:200];times = [];timesBruteForce = []for i = range    tic();  isLucky(i);  times = [times, toc()];    tic();  isLuckyAlternative(i);  timesBruteForce = [timesBruteForce, toc()];  
+endforplot(range, times);  hold on;plot(range, timesBruteForce);set(gca,'FontSize',15);legend({'Execution time of isLucky(x)', 'Execution time of is LuckyAlternative(x)'});legend('boxoff');xlabel('Input x');ylabel('Execution Time (s)');print -depsc ../report/islucky_test.epshold off;

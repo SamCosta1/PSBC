@@ -1,5 +1,6 @@
-\documentclass[10pt]{report}
+\documentclass[10pt]{article}
 
+\usepackage[title]{appendix}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage[numbered,autolinebreaks]{mcode}
@@ -126,6 +127,7 @@ We see the output from both approaches are in agreement, and that the optimizati
 
 \section{Lucky numbers}
 
+\subsection{Context}
 Lucky numbers, (more commonly referred to as Carmichael numbers \cite{carmichael}) are integers $n$ that satisfy the following criterion.
 
 \begin{enumerate}
@@ -149,7 +151,9 @@ Firstly, some observations regarding the criterion.
 \item Given a list of the prime factors of $n$, if we find one prime factor $p$ such that $p -1 \nmid n-1$, we can rule the number isn't a lucky number, and there is no need to check the rest of the prime factors.
 \end{itemize}
 
-Returning to our function, with these optimizations in mind,  our approach is to check the integers greater than $N$ until we find one that's lucky. We can see at once that the first number $s$we must check is;
+\subsection{The luckynum function}
+
+Returning to our function (which we'll call \emph{luckynum}), with these observations in mind,  our approach is to check the integers greater than $N$ until we find one that's lucky. We can see at once that the first number $s$ we must check is;
 
 $$ s = \begin{cases}
                N + 1,& \text{if N is even}\\
@@ -163,6 +167,58 @@ The implementation of the function is as follows.
 
   \lstinputlisting[label={luckynum}, caption={The luckynum function}] {../part2/luckynum.m}
 
+What remains, is to explore how we actually check if a given number $n$ is lucky. In the luckynum function in Listing \ref{luckynum} we use the function \emph{isLucky} which we will now explore.
+
+  
+\subsection{The isLucky function}
+
+The full source is listed in Listing \ref{islucky}.
+  \lstinputlisting[label={islucky}, caption={The isLucky function}] {../part2/isLucky.m}
+  
+The approach here is to initialise the result variable to true, and then as soon as one of the checks on N fails (i.e. determines N isn't lucky), result is set to false and crucially \emph{no other checks are performed}. 
+
+First we check if $N$ is even, the reader may wonder why this is needed. Since the implementation of the \emph{luckynum} function never calls \emph{isLucky} with even numbers, hence this check is redundant. However we aim to produce reusable code, and the next time we use the \emph{isLucky} function, it may be called with an even number and so it is best practice to handle this correctly.
+
+The order of the following checks is important, not in terms of correctness, but in terms of performance. $N$ is first factorized and the result stored. To check if the number is prime, we must only check if the number of factors is 1, which is the fastest of the operations we must perform.
+
+Here we take advantage of \emph{lazy evaluation} to save making comparisons we don't need to. In a logical test
+
+$$ p || q $$
+
+If $p$ is evaluated to be true, then Octave knows that the whole expression must be true, and doesn't evaluate $q$. So, if we have more than one prime factor, we then check if the number of prime factors is equal to the number of unique prime factors, i.e. whether there are any duplicates.
+
+The last, and clearly slowest check is the last  of the criterion for lucky numbers. Notice that we make use of our observation that we can stop if we find any factors without the desired property in the code, in the form of a break in the loop.
+
+The reader may notice that the most expensive operation in the implementation is the factorization of of $N$ itself and whether there are any checks we could make before this. An alternative approach is to first check if the number is prime, and only if it is not do we do the factorization. 
+
+At first glance this seems a better solution since checking if a number is prime is faster than factorization. However, we must also consider that most numbers are not prime, so this check will fail more often than it passes, and it is in itself not a very fast operation. Hence the most common case is doing \emph{both} the factorization, and the primality check.
+
+The implementation of this alternative approach is listed in Appendix \ref{islucky_appendix}, but more importantly Figure \ref{isluckytest} shows a performance comparison between the two approaches. We can see clearly that our original approach is the more efficient in the general case.
+
+\begin{center}
+\begin{figure}
+
+   \includegraphics[scale=0.6]{islucky_test.eps}
+
+   \caption{A performance comparison between isLucky and isLuckyAlternative. Note that the even values of x where skipped in producing the data in order to make it more legible, since both functions treat even numbers in the same way}
+      \label{isluckytest}
+\end{figure}
+\end{center}
+
+\subsection{A specific example}
+
+The following shows the output the \emph{luckynum} function with the input of 2019.
+
+\begin{verbatim}
+>> luckynum(2019)
+ans =  2465
+\end{verbatim}
+\begin{appendices}
+\section{Alternative isLucky function}\label{islucky_appendix}
+
+  \lstinputlisting[label={islucky_alternative}, caption={The alternative implementation of isLucky}] {../part2/isLuckyAlternative.m}
+  
+\end{appendices}
 
 \begin{thebibliography}{9}
 \bibitem{eulerconst}
