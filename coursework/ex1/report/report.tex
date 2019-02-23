@@ -6,6 +6,7 @@
 \usepackage[numbered,autolinebreaks]{mcode}
 \usepackage{graphicx}
 \usepackage{verbatim}
+\usepackage[margin=1.5in]{geometry}
 
 \newcommand*{\gam}{$\gamma \text{ }$}
 \newcommand*{\gami}{$\gamma_{i} \text{ }$}
@@ -65,7 +66,7 @@ q_{i+1} (\gamma - \delta_i) < p_{i+1} < q_{i+1} ( \gamma + \delta_i
 
 Which is exactly what we need, for a given $q$, we have a constraint on p. So every time we find a better approximation, (a new \gami), we tighten the bound on which values of $p$ we need to check.
 
-However, to find $gamma_0$ currently we still have to check all possible values of $p$ when $q = 1$ since we don't yet have a current best approximation. Notice that if $N = 1,2$, though valid inputs, the results aren't useful. However, for $N \geq 3$, observe that $gamma_0 = \frac{1}{2}$. Hence we can just hard-code this initial value. However, this does mean treating $N = 1,2$ as a special case, but which is worth it for the saved calculations.
+However, to find $\gamma_0$ currently we still have to check all possible values of $p$ when $q = 1$ since we don't yet have a current best approximation. Notice that if $N = 1,2$, though valid inputs, the results aren't useful. However, for $N \geq 3$, observe that $\gamma_0 = \frac{1}{2}$. Hence we can just hard-code this initial value. However, this does mean treating \textbf{trivial values of N} ($N = 1,2$) as a special case, but which is worth it for the saved calculations.
 
 \emph{The reader may note at this point that it is often considered bad practice to hard-code values like this, as it sometimes offects flexiblilty. However, I argue that in this instance, we are hard-coding the value of a base case in our sequence of \gami values, and that it's performance improvement, combined with the legibility of the code makes it an acceptable approach.}
 
@@ -73,7 +74,7 @@ Given this justification, the code listing is as follows.
 
   \lstinputlisting[label={appem_code}, caption={An optimized implementation to find p and q}] {../part1/AppEm.m}
 
-There is one further optimization in Listing \ref{appem_code} that hasn't yet been discussed. This is the limiting of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed $q$ to run from 1 to $N$, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation.
+There is one further optimization in Listing \ref{appem_code} that hasn't yet been discussed. This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed $q$ to run from 1 to $N$, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation.
 
 By the definition of the problem and by Equation \ref{em_constraint}, we have the following information.
 
@@ -193,8 +194,6 @@ The reader may notice that the most expensive operation in the implementation is
 
 At first glance this seems a better solution since checking if a number is prime is faster than factorization. However, we must also consider that most numbers are not prime, so this check will fail more often than it passes, and it is in itself not a very fast operation. Hence the most common case is doing \emph{both} the factorization, and the primality check.
 
-The implementation of this alternative approach is listed in Appendix \ref{islucky_appendix}, but more importantly Figure \ref{isluckytest} shows a performance comparison between the two approaches. We can see clearly that our original approach is the more efficient in the general case.
-
 \begin{center}
 \begin{figure}
 
@@ -205,6 +204,9 @@ The implementation of this alternative approach is listed in Appendix \ref{isluc
 \end{figure}
 \end{center}
 
+
+The implementation of this alternative approach is listed in Appendix \ref{islucky_appendix}, but more importantly Figure \ref{isluckytest} shows a performance comparison between the two approaches. We can see clearly that our original approach is the more efficient in the general case.
+
 \subsection{A specific example}
 
 The following shows the output the \emph{luckynum} function with the input of 2019.
@@ -214,6 +216,8 @@ The following shows the output the \emph{luckynum} function with the input of 20
 ans =  2465
 \end{verbatim}
 \begin{appendices}
+
+\section{Perfect Numbers}
 \section{Alternative isLucky function}\label{islucky_appendix}
 
   \lstinputlisting[label={islucky_alternative}, caption={The alternative implementation of isLucky}] {../part2/isLuckyAlternative.m}

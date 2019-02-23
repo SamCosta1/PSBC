@@ -27,10 +27,10 @@ function [p, q] = AppEm (N)
 
     % Limit the values of p that we check to only those that
     % could be closer to the emConstant than our current best
-    pMax = min(floor(q * (emConstant + currentBestDiff)), N - q);
+    pMax = floor(q * (emConstant + currentBestDiff));
     pMin = ceil(q * (emConstant - currentBestDiff));
 
-    for p = pMin:pMax
+    for p = pMin:min(pMax, N - q)
 
       diffToEM = absDiff(p / q);
 
