@@ -1,2 +1,1 @@
-function n = luckynum(N)    isEven = @(value) mod(value, 2) == 0;  start = N;  if (isEven(N))    start = N + 1;
-  endif      current = start;  while(!isLucky(current))      current += 2;  endwhile  n = current;endfunction
+function n = luckynum(N)% LUCKYNUM Find the smallest lucky number % that is greater than or equal to N  % Ensure we start from the first odd number greater  % than or equal to N  % i.e N if N is odd, and N + 1 if even      current = N + rem(10, 2);    while(!isLucky(current))    current += 2;  end  n = current;end

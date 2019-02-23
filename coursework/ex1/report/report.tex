@@ -124,11 +124,54 @@ Elapsed time is 18.8509 seconds.
 
 We see the output from both approaches are in agreement, and that the optimizations result in an almost 400 times speed up.
 
+\section{Lucky numbers}
+
+Lucky numbers, (more commonly referred to as Carmichael numbers \cite{carmichael}) are integers $n$ that satisfy the following criterion.
+
+\begin{enumerate}
+\item $n$ is not prime
+\item All prime factors of $n$ are odd
+\item All $n$'s prime factors are distinct i.e. 
+$$n=p_1p_2...p_k,\text{     }  p_i \text{ is prime } \forall i, \text{ and } p_i \neq p_j \text{ for } i \neq j$$
+\item For each prime factor $p$ of $n$, $p - 1$ divides $n-1$ 
+\end{enumerate}
+
+Our aim is to write a function to compute the smallest lucky number which is greater than or equal to an arbitrary integer $N$. 
+
+Firstly, some observations regarding the criterion.
+
+\begin{itemize}
+
+\item All prime factors of $n$ are odd $\iff$ $n$ is odd\\
+ (since the only even prime is 2, and if $2|n$ then $n$ is even).\\
+ 
+ Hence if $n$ is even we can immediately rule out the possibility it is lucky.
+\item Given a list of the prime factors of $n$, if we find one prime factor $p$ such that $p -1 \nmid n-1$, we can rule the number isn't a lucky number, and there is no need to check the rest of the prime factors.
+\end{itemize}
+
+Returning to our function, with these optimizations in mind,  our approach is to check the integers greater than $N$ until we find one that's lucky. We can see at once that the first number $s$we must check is;
+
+$$ s = \begin{cases}
+               N + 1,& \text{if N is even}\\
+               N, & \text{if N is odd}
+            \end{cases}
+$$
+
+Of course if this number is lucky, then we're done. But if not, what is the next number we must check? Notice that $s + 1$ must be even, since $s$ is odd by construction. We have already observed that even numbers can't be lucky. So the next number to check is $s+2$. This pattern continues as we iterate, we can increment the number being checked by 2 each time, avoiding even numbers.
+
+The implementation of the function is as follows.
+
+  \lstinputlisting[label={luckynum}, caption={The luckynum function}] {../part2/luckynum.m}
+
+
 \begin{thebibliography}{9}
 \bibitem{eulerconst}
 Weisstein, Eric W. "Euler-Mascheroni Constant." From MathWorld--A Wolfram Web Resource. http://mathworld.wolfram.com/Euler-MascheroniConstant.html
 Referenced: 22-02-2019
 
+\bibitem{carmichael}
+Weisstein, Eric W. "Carmichael Number." From MathWorld--A Wolfram Web Resource. http://mathworld.wolfram.com/CarmichaelNumber.html
+Referenced: 23-02-2019
 
 \end{thebibliography}
 
