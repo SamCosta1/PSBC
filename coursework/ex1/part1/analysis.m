@@ -1,2 +1,2 @@
-times = [];timesBruteForce = []itrs = 100for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];    tic();  AppEmNaive(i);  timesBruteForce = [timesBruteForce, toc()];  
-endforplot(times);  hold on;plot(timesBruteForce);set(gca,'FontSize',20)hold off;
+times = [];timesBruteForce = []itrs = 300for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];    tic();  AppEmBruteForce(i);  timesBruteForce = [timesBruteForce, toc()];  
+endforplot(times);  hold on;plot(timesBruteForce);set(gca,'FontSize',20)print -depsc ../report/bruteforce_vs_better.epshold off;

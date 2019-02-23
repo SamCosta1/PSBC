@@ -1,1 +1,1 @@
-tic();[p, q] = AppEm(500000);elapsed = toc();elapsedpq
+tic();[p, q] = AppEm(2019)toc()tic();[p, q] = AppEmBruteForce(2019)toc()

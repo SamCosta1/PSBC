@@ -1,18 +1,21 @@
 function [p, q] = AppEm (N)
   emConstant = 0.577215664901533;
-  opsCount = 0;
   
-  % Check for the trivial case early to allow assumptions to be made later
+  % Check for the trivial case early to allow 
+  % assumptions to be made further down
   if (N <= 2)
     p = N - 1;
     q = 1;
     return;
-  endif
+  end
   
-  % Helper function forgiving the difference between any value and the emConstant  absDiff = @(value) abs(value - emConstant);
+  % Helper function for giving the difference between any 
+  %value and the emConstant  absDiff = @(value) abs(value - emConstant);
 
-  % Since we've dealt with the trivial case of N = 1,2. The first value value of p/q 
-  % will always be 1/2, we don't waste time calculating it but use it as the initial value
+  % Since we've dealt with the trivial case of N = 1,2. 
+  % The first value value of p/q will always be 1/2, 
+  % we don't waste time calculating it but use it as the
+  % initial value
   currentBestDiff = absDiff(1 / 2);
   currentBestPQ = [1, 2];
     
@@ -22,8 +25,8 @@ function [p, q] = AppEm (N)
 
   while (q < qMax)
 
-    % Limit the values of p that we check to only those that could be closer to
-    % the emConstant than our current best
+    % Limit the values of p that we check to only those that
+    % could be closer to the emConstant than our current best
     pMax = min(floor(q * (emConstant + currentBestDiff)), N - q);
     pMin = ceil(q * (emConstant - currentBestDiff));
 
@@ -37,19 +40,16 @@ function [p, q] = AppEm (N)
         currentBestPQ = [p, q];     
         
         % Recalculate the maximal value of q
-        qMax = ceil(N / (emConstant - currentBestDiff + 1))
+        qMax = ceil(N / (emConstant - currentBestDiff + 1));
        
-      endif
-
-    endfor
+      end
+    end
 
     q = q + 1;
-
-  endwhile
+  end
   
   p =  currentBestPQ(1);
   q =  currentBestPQ(2);
-
-endfunction
+end
 
 
