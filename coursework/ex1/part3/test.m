@@ -1,3 +1,2 @@
-##str = [];##dig = [];##for i = 1:5000##  tic();##  isLucky(i);##  str = [str, toc()];##  ##  tic();##  isluckydavis(i);##  dig = [dig, toc()];##  
-## endfor##  ##  ##  plot(str);##  hold on;##  plot(dig);##  legend(legend({'first','second'},'Location','southwest'));##  hold off;
-perfs = [];for i = sqrt(100000000):sqrt(999999999)if isPerfect(i^2)perfs=[perfs, i];endifendfor
+str = [];dig = [];tests = [12094   12453   13609   15178   15822   17017   18547   19200   19473   19599   19972   21601 ...   22953   23098   23308   23838   24256   24358   24624   24933   25315   25756   26175   26571 ...   26931   27201   28153   29070   29745   30434] .^ 2;         for i = tests  tic();  PerfNum(i);  str = [str, toc()];    tic();  perfectNumberNearest(i);  dig = [dig, toc()];  
+ endfor      plot(str);  hold on;  plot(dig);  legend(legend({'first','second'},'Location','southwest'));  hold off;
