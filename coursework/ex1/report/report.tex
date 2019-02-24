@@ -215,13 +215,100 @@ The following shows the output the \emph{luckynum} function with the input of 20
 >> luckynum(2019)
 ans =  2465
 \end{verbatim}
-\begin{appendices}
 
 \section{Perfect Numbers}
+
+\subsection{Context}
+Given an integer $n \in \mathbb{Z}$ we say that $n$ is \emph{perfect} if it's square consists of all the digits $1 \rightarrow 9$ exactly once. Importantly, it does \emph{not} include the digit $0$.
+
+For example, when $ n = 24237 $
+
+$$ n^2 = 587432169 $$
+
+So $24237$ is said to be a perfect number.
+
+The problem we're interested in solving is as follows, given an arbitrary integer $N$,  
+
+\begin{equation} \label{rangeN}
+10^9 < N < 10^{10}
+\end{equation}
+
+
+We seek the perfect $n$ who's square is closest to $N$.
+
+\subsection{The isPerfect function}
+
+Firstly, we need a way of checking whether a given integer $n$ is perfect. The function is listed below (Listing \ref{isperfect}).
+
+ \lstinputlisting[label={isperfect}, caption={The isPerfect function}] {../part3/isPerfect.m}
+ 
+ Once again we make use of the lazy evaluation property of the language. We see that three checks are made
+ 
+ \begin{itemize}
+ \item Checking there are 9 digits exactly (not strictly needed since we're assuming $N$ is as in equation \ref{rangeN}, but included  for completeness since it's a very fast check anyway)
+ \item Checking that the digit $0$ doesn't appear
+ \item Checking each digit appears exactly once
+ \end{itemize}
+ 
+ The checks are done in order of speed, this way, because of lazy evaluation, more expensive checks won't be carried out if cheaper checks rule out the possibility of $N$ being perfect.
+ 
+ One thing that's been skated over so far, is the \emph{int2Digits} function. Which returns an array of the digits of a base 10 number. (The full listing is included in Appendix \ref{int2digits}).
+ 
+ The obvious alternative here would be to use the inbuilt \emph{num2str} function in a similar way. However, having performed some experiments comparing the two approaches, the custom approach appears to be marginally faster.
+ 
+\subsection{The PerfNum function}
+
+Now that we have a mechanism for determining if a given number is perfect, we can return to the original problem.
+
+The above problem can be restated slightly differently as follows.
+
+Given an arbitrary integer $N$ find $n \in \mathbb{Z}$ such that $n = \sqrt{m}$ and $m$ is the closest perfect number to $N$.
+
+The first, obvious observation is that $m$ is a square number. Hence if we take $\lfloor\sqrt{N} \rfloor$, it is clear that by trying each integer of the form 
+
+$$ \lfloor\sqrt{N} \rfloor + 1, \lfloor\sqrt{N} \rfloor - 1, \lfloor\sqrt{N} \rfloor + 2, \lfloor\sqrt{N} \rfloor -2 ...$$
+
+We'll eventually find $n$. If $ \lfloor\sqrt{N} \rfloor + i  $ and  $ \lfloor\sqrt{N} \rfloor - i  $ both are perfect, then we'll need to manually work out which's square is closest to $N$.
+
+This approach aims to check the fewest number of possibilties as possible.
+
+The code listing is below (Listing \ref{perfnum}).
+
+ \lstinputlisting[label={isperfect}, caption={The PerfNum function}] {../part3/PerfNum.m}
+ 
+For ths function the assumption in equation \ref{rangeN} is made. Hence the worst case performance of this function is when $N$ is exactly between the two perfect numbers which have the most distance between them. We can fairly easily work out that these are $20316^2$ \&$22887^2$. 
+
+Let's try the worst case value of $N$, which we can work out from this is $ N = 468277312 $
+
+  \lstinputlisting[label={perfworst}] {../part3/testWorstCase.m}
+  
+ \begin{verbatim}
+ >> testWorstCase
+ans =  22887
+Elapsed time is 0.959387 seconds.
+\end{verbatim}
+
+It's clear that the function in the very worst case still runs in under a second, hence for any valid input it will return in an acceptable amount of time.
+
+\subsection{Another specific example}
+
+The following shows the output of the \emph{PerfNum} function with the input 360322019.
+
+\begin{verbatim}
+>> PerfNum(360322019)
+ans =  19023
+\end{verbatim}
+\begin{appendices}
+
+
 \section{Alternative isLucky function}\label{islucky_appendix}
 
   \lstinputlisting[label={islucky_alternative}, caption={The alternative implementation of isLucky}] {../part2/isLuckyAlternative.m}
   
+\section{The int2Digits function}
+
+  \lstinputlisting[label={int2digits}, caption={The int2Digits function}] {../part3/int2Digits.m}
+
 \end{appendices}
 
 \begin{thebibliography}{9}

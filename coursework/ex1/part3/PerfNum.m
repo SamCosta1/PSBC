@@ -1,3 +1,3 @@
-function n = PerfNum (N)    rootN = round(sqrt(N));    currentOffset = 0;  found = false;    while (!found)        perfects = [];        for multiplier = [-1 1]      currentSquared = (rootN + multiplier * currentOffset) ^ 2;            if (isPerfect(currentSquared))        perfects = [perfects, currentSquared];      endif    endfor        [delta, index] = min(abs(N - perfects));        if (index > 0)      n = sqrt(perfects(index));      found = true;    endif        currentOffset = currentOffset + 1;  endwhile  
-endfunction
+function n = PerfNum (N)    rootN = round(sqrt(N));    currentOffset = 0;  found = false;    while (!found)        perfects = [];        for multiplier = [-1 1]      current = rootN + multiplier * currentOffset;      [isPerf, currentSquared] = isPerfect(current);            if (isPerf)        perfects = [perfects, currentSquared];      end    end        % Find the index of the perfect number closest to N    [delta, indexOfClosest] = min(abs(N - perfects));        if (indexOfClosest > 0)      n = current;      found = true;    end        currentOffset = currentOffset + 1;  end  
+end
 
