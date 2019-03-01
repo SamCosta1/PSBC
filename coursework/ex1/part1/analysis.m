@@ -1,2 +1,2 @@
-times = [];timesBruteForce = []itrs = 300for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];    tic();  AppEmBruteForce(i);  timesBruteForce = [timesBruteForce, toc()];  
-endforplot(times);  hold on;plot(timesBruteForce);set(gca,'FontSize',15);legend({'AppEm(N)', 'AppEmBruteForce(N)'});legend('boxoff');xlabel('Input N');ylabel('Execution Time (s)');print -depsc ../report/bruteforce_vs_better.epshold off;
+times = [];timesBruteForce = []itrs = 300;for i = 1:itrs    tic();  AppEm(i);  times = [times, toc()];    tic();  AppEmBruteForce(i);  timesBruteForce = [timesBruteForce, toc()];  
+endforplot(times, 'r', 'LineWidth', 1.7);  hold on;plot(timesBruteForce, 'b');title('Performance comparison of the AppEm functions');set(gca, "fontsize", 15);xlabel('Input N');ylabel('Execution Time (s)');legend('AppEm', 'AppEmBruteForce');print -depsc ../report/bruteforce_vs_better.epshold off;
