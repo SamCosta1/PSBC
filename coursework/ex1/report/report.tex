@@ -3,7 +3,7 @@
 \usepackage[title]{appendix}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage[numbered,autolinebreaks]{mcode}
+\usepackage[numbered,autolinebreaks, framed]{mcode}
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage[margin=1.4in]{geometry}
@@ -14,9 +14,10 @@
 
 \begin{document}
 
+
 \section{Introduction}
 
-This report details the approach and implementation details relating to the first courswork project of MATH36032. Please note that all programming and testing was carried out using GNU Octave rather than MATLAB.
+This report details the approach and implementation details relating to the first coursework project of MATH36032. Please note that all programming and testing was carried out using GNU Octave rather than MATLAB.
 \section{The Euler-Mascheroni constant}
 
 \subsection{Context}
@@ -64,12 +65,12 @@ q_{i+1} (\gamma - \delta_i) < p_{i+1} < q_{i+1} ( \gamma + \delta_i ).
 
 What we have now, is for a given $q$ we have a bound on the possible values of $p$ we need to check. Furthermore, we have a way of tightening the bound every time we find a new approximation for \gam.
 
-However, to find $\gamma_0$ currently we still have to check all possible values of $p$ when $q = 1$ since we don't yet have a current best approximation. Notice that if $N = 1,2$, are valid inputs, but the results are
+However, to find $\gamma_0$ currently we still have to check all possible values of $p$ when $q = 1$ since we don't yet have a current best approximation. Notice that $N = 1,2$ are valid inputs, but the results are
 
 $$ \frac{p}{q} = \frac{0}{1} \text{  and  }  \frac{p}{q} = \frac{1}{ 1} \text{ respectively}. $$
 
 Which are not useful approximations of \gam.
- However, for $N \geq 3$, observe that $\gamma_0 = \frac{1}{2}$. Hence we can just hard-code this initial value. However, this does mean treating \textbf{trivial values of N} ($N = 1,2$) as a special case, but which is worth it for the saved calculations.
+ However, for $N \geq 3$, observe that $\gamma_0 = \frac{1}{2}$. Hence we can just hard-code this initial value. This does mean treating \textbf{trivial values of N} ($N = 1,2$) as a special case, but which is worth it for the saved calculations.
 
 \emph{The reader may note at this point that it is often considered bad practice to hard-code values like this, as it sometimes effects flexiblilty. However, I argue that in this instance, we are hard-coding the value of a base case in our sequence of \gami $ $ values, and that it's performance improvement, combined with the legibility of the code makes it an acceptable approach.}
 
