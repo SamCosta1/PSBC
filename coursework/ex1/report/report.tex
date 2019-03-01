@@ -49,7 +49,35 @@ First we will set up some notation. Notice that in Listing \ref{bruteforce_code}
 \end{equation}
 
 
-Given a value of \gami, we know that $\gamma_{i+1}$ will be closer to the real \gam than \gami, since otherwise it wouldn't be one of the sequence. Hence
+Lets assume we already have a \gami.  There are two possibilities. Either, $\gamma_{i+1}$ is an equally good approximation, but  $p_{i+1} + q_{i+1} < p_i + q_i$. Or $\gamma_{i+1}$ is closer to \gam than \gami. \\
+
+\noindent \textbf{Case 1 } \\
+
+Formally we have the following two equations.
+
+\begin{equation}\label{equalgammas}
+|\gamma- \gamma_{i+1}| = |\gamma - \gamma_{i}| ,
+\end{equation}
+
+\begin{equation} \label{contradiction}
+p_{i+1} + q_{i+1} < p_i + q_i.
+\end{equation}
+
+From here, we need to make the assumption that \gam is in fact irrational. The justification for this is that if \gam is rational, then we can define it exactly as a quotient of integers, making the whole aim redundant. 
+
+In this case we can see that if equation \ref{equalgammas} holds, then since \gam is irrational must be the case that both $\gamma_{i}$ and $\gamma_{i+1}$ are less than \gam, or they're both greater than \gam. Since if one was greater than \gam and one less, it would contradict \gam being irrational.
+
+This directly implies that
+
+$$ \gamma_{i+1} = \gamma_{i}  \implies \frac{p_i}{q_i} = \frac{p_{i+1}}{q_{i+1}}.$$
+
+However, the variable \texttt{q} in the code is strictly increasing. Hence the sequence of $q_i$ is strictly increasing. So $q_i < q_{i+1}$. It then follows directly that $p_i < p_{i+1}$ and hence $p_i + q_i < p_{i+1} + q_{i+1}$. This contradicts equation \ref{contradiction}.
+
+Hence we can see that this case will never actually occur in practice. This means we can define the next term in our sequence as in \emph{case 2}. \\
+
+\noindent \textbf{Case 2} \\
+
+Given the argument in \emph{case 1}. We know that $\gamma_{i+1}$ will be closer to the real \gam than \gami, since otherwise it wouldn't be one of the sequence. Hence
 
 $$ |\gamma- \gamma_{i+1}| < |\gamma - \gamma_{i}| .$$
 
@@ -79,6 +107,8 @@ Given this justification, the code listing is as follows.
   \lstinputlisting[label={appem_code}, caption={An optimized implementation to find p and q}] {../part1/AppEm.m}
 
 There is one further optimization in Listing \ref{appem_code} that hasn't yet been discussed. This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed the variable \texttt{q} to run from 1 to \texttt{N}, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation.
+
+This suggests we should be able to find
 
 Let's return to equation \ref{em_constraint}. If we look at the left hand side of this constraint;
 
