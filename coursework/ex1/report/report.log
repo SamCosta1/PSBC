@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  3 MAR 2019 11:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  3 MAR 2019 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -300,7 +300,50 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen125
 \Gm@dimlist=\toks24
 )
-(./report.aux)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/verbatimbox/verbatimbox.sty
+Package: verbatimbox 2014/03/12 v3.13 Routines for placing verbatim text into b
+oxes, useful in places where the verbatim environment is inaccessible. Secondar
+ily, for adding vertical buffer around an object.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/readarray/readarray.sty
+Package: readarray 2016/11/07\ 2.0\ Routines for inputting 2D and 3D array data
+ and recalling it on an element-by-element basis.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/listofitems/listofitems.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/listofitems/listofitems.tex
+\loi_nestcnt=\count114
+)
+Package: listofitems 2016/11/18 v1.3 Grab items in lists using user-specified s
+ep char
+)
+\c@@index=\count115
+\c@@plane=\count116
+\c@@row=\count117
+\c@@col=\count118
+\c@use@args=\count119
+\c@@record=\count120
+\c@arg@index=\count121
+\c@break@count=\count122
+\c@index@count=\count123
+\c@loop@count=\count124
+\Arg@toks=\toks25
+\@arrayident@toks=\toks26
+\rdar@file=\read2
+
+readarray: bounds checking OFF
+)
+\savedverbbox=\box31
+\c@VerbboxLineNo=\count125
+\boxtopsep=\dimen126
+\boxbottomsep=\dimen127
+\ps@tempdima=\dimen128
+\ps@tempboxa=\box32
+\boxtop@sep=\skip46
+\boxbottom@sep=\skip47
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -321,20 +364,19 @@ LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 17.
-
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count114
-\scratchdimen=\dimen126
-\scratchbox=\box31
-\nofMPsegments=\count115
-\nofMParguments=\count116
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count117
-\MPscratchDim=\dimen127
-\MPnumerator=\count118
-\makeMPintoPDFobject=\count119
-\everyMPtoPDFconversion=\toks26
+\scratchcounter=\count126
+\scratchdimen=\dimen129
+\scratchbox=\box33
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen130
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks28
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -381,7 +423,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count120
+\c@lstlisting=\count132
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -466,27 +508,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
-
- []
-
-(../part1/AppEm.m [3]
+[3] (../part1/AppEm.m
 LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)) [4]
+) [4])
 Package epstopdf Info: Source file: <bruteforce_vs_better.eps>
 (epstopdf)                    date: 2019-03-02 10:26:47
 (epstopdf)                    size: 17039 bytes
@@ -525,15 +552,14 @@ File: bruteforce_vs_better_logs-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: bruteforce_vs_better_logs-eps-converted-to.pdf used on
  input line 146.
 (pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
- (../part1/part1.m)
-[5] [6 <./bruteforce_vs_better-eps-converted-to.pdf> <./bruteforce_vs_better_lo
-gs-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
+ [5 <./bruteforce_vs_better-eps-converted-to.pdf>] (../part1/part1.m) [6 <./bru
+teforce_vs_better_logs-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 195.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 194.
 (../part2/luckynum.m [7]) (../part2/isLucky.m) [8]
 Package epstopdf Info: Source file: <islucky_test.eps>
 (epstopdf)                    date: 2019-03-03 10:32:59
@@ -543,7 +569,7 @@ Package epstopdf Info: Source file: <islucky_test.eps>
 (epstopdf)                    size: 12740 bytes
 (epstopdf)             Command: <repstopdf --outfile=islucky_test-eps-converted
 -to.pdf islucky_test.eps>
-(epstopdf)             \includegraphics on input line 248.
+(epstopdf)             \includegraphics on input line 245.
 Package epstopdf Info: Output file is already uptodate.
 
 <islucky_test-eps-converted-to.pdf, id=62, 578.16pt x 433.62pt>
@@ -551,29 +577,29 @@ File: islucky_test-eps-converted-to.pdf Graphic file (type pdf)
 
 <use islucky_test-eps-converted-to.pdf>
 Package pdftex.def Info: islucky_test-eps-converted-to.pdf used on input line 2
-48.
+45.
 (pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
  [9 <./islucky_test-eps-converted-to.pdf>] (../part3/isPerfect.m) [10]
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
 (../part3/PerfNum.m [11]) (../part3/testWorstCase.m)
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 362.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 355.
 
 (../part2/isLuckyAlternative.m [12]) (../part3/int2Digits.m) [13] (./report.aux
 ) ) 
 Here is how much of TeX's memory you used:
- 5432 strings out of 492995
- 75443 string characters out of 6132705
- 240867 words of memory out of 5000000
- 8852 multiletter control sequences out of 15000+600000
+ 5770 strings out of 492995
+ 80095 string characters out of 6132705
+ 230997 words of memory out of 5000000
+ 9173 multiletter control sequences out of 15000+600000
  13714 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,9n,42p,577b,1591s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -598,7 +624,7 @@ ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-dist/fonts
 /type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
 ype1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (13 pages, 278360 bytes).
+Output written on report.pdf (13 pages, 278269 bytes).
 PDF statistics:
  147 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams

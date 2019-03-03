@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage[margin=1.4in]{geometry}
-
+\usepackage{verbatimbox}
 \newcommand*{\gam}{$\gamma$}
 \newcommand*{\gami}{$\gamma_{i}$}
 \newcommand*{\pdivq}{$\frac{p}{q} \text{ }$}
@@ -29,9 +29,9 @@ The Euler-Mascheroni constant is a mathematical constant that first appeared in 
 \gamma = \lim_{n \to \infty}  \left( -\ln{n} + \sum_{k=0}^{n} \frac{1}{k}  \right) \approx 0.577215664901533.
 \end{equation}
 
-Very little is known about this constant, it isn't even known whether or not it is rational. Hence it is often convenient to approximate it's value to a quotient of positive integers, which we will denote $ \frac{p}{q}$. However, if \gam is indeed irrational, for each $p$, $q$ we find, we'll be able to find another pair, who's ratio is closer to \gam. The question becomes, which integers do we choose?
+Very little is known about this constant, it isn't even known whether or not it is rational. Hence it is often convenient to approximate it's value to a quotient of positive integers, which we will denote $ \frac{p}{q}$. However, if $\gamma$ is indeed irrational, for each $p$, $q$ we find, we'll be able to find another pair, who's ratio is closer to \gam. The question becomes, which integers do we choose?
 
-Let's introduce an arbitrary integer $N$, we will aim to find a quotient of integers \pdivq such that $p + q \leq N$. Where \pdivq is the best approximation of \gam with this constraint. Furthermore, where there are multiple pairs that give the best approximation, we will take the pair with the smallest value of $p+q$.
+Let's introduce an arbitrary integer $N$. We will aim to find a quotient of integers \pdivq such that $p + q \leq N$. Where \pdivq is the best approximation of $\gamma$ with this constraint. Furthermore, where there are multiple pairs that give the best approximation, we will take the pair with the smallest value of $p+q$.
 
 \subsection{The brute force approach}
 
@@ -51,7 +51,7 @@ First we will set up some notation. Notice that in Listing \ref{bruteforce_code}
 \end{equation}
 
 
-Lets assume we already have a \gami.  There are two possibilities. Either, $\gamma_{i+1}$ is an equally good approximation, but  $p_{i+1} + q_{i+1} < p_i + q_i$. Or $\gamma_{i+1}$ is closer to \gam than \gami. \\
+Lets assume we already have a \gami.  There are two possibilities. Either, $\gamma_{i+1}$ is an equally good approximation, but  $p_{i+1} + q_{i+1} < p_i + q_i$. Or $\gamma_{i+1}$ is closer to $\gamma$ than \gami. \\
 
 \noindent \textbf{Case 1 } \\
 
@@ -104,11 +104,7 @@ Which are not useful approximations of \gam.
 
 \emph{The reader may note at this point that it is often considered bad practice to hard-code values like this, as it sometimes effects flexiblilty. However, I argue that in this instance, we are hard-coding the value of a base case in our sequence of \gami $ $ values, and that it's performance improvement, combined with the legibility of the code makes it an acceptable approach.}
 
-Given this justification, the code listing is as follows. \\ \\ \\
-
-  \lstinputlisting[label={appem_code}, caption={An optimized implementation to find p and q.}] {../part1/AppEm.m}
-
-There is one further optimization in Listing \ref{appem_code} that hasn't yet been discussed. This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed the variable \texttt{q} to run from 1 to \texttt{N}, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation, suggesting we should be able to define an upper bound on $q$ which is less than $N$.
+Finally, there is another optimization we can perform.  This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed the variable \texttt{q} to run from 1 to \texttt{N}, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation, suggesting we should be able to define an upper bound on $q$ which is less than $N$.
 
 Indeed, by returning to Equation \ref{em_constraint}. If we look at the left hand side of this constraint;
 
@@ -126,12 +122,16 @@ $$ \implies q_{i+1}  \leq \frac{N}{(\gamma - \delta_i + 1)}  $$
 
 So everytime we find a new approximation for \gam, we can also update the maximal possible value of $q$ (\texttt{qMax} in Listing \ref{appem_code}). In practice this provides less of an optimization than the constraining of $p$, but for large $N$ this does have a noticeable effect.
 
+Given this justification the code is included in Listing \ref{appem_code}.
+
+  \lstinputlisting[label={appem_code}, caption={An optimized implementation to find p and q.}] {../part1/AppEm.m}
+
 \subsection{Performance}
 
 The performance improvement in our optimization has proven to be more than acceptable. Recall how we classified the original algorithm (Listing \ref{bruteforce_code}) to be an $O(N^2)$ algorithm. The following experiments show that the optimized version resembles an $O(N)$ time complexity.
 
 
-Figure \ref{fig:emnaive_vs_better} shows   the time taken for both algorithms to complete for the input $N$ from 1 to 250. It appears to support our claim, but to further confirm the validity of our analysis, figure \ref{loglog} shows the logs of the values in figure \ref{fig:emnaive_vs_better} on logarithmic axes. The gradients of the lines approximating the brute force curve and optimized curve are \textbf{1.9} and \textbf{0.9}, respectively. This is almost exactly what we'd expect from taking the logs of quadratic and linear plots.
+Figure \ref{fig:emnaive_vs_better} shows   the time taken for both algorithms to complete for the input $N$ from 1 to 250. It appears to support our claim, but to further confirm the validity of our analysis, Figure \ref{loglog} shows the logs of the values in Figure \ref{fig:emnaive_vs_better} on logarithmic axes. The gradients of the lines approximating the brute force curve and optimized curve are \textbf{1.9} and \textbf{0.9}, respectively. This is almost exactly what we'd expect from taking the logs of quadratic and linear plots.
 
 \begin{figure}[!hb]
 
@@ -141,7 +141,7 @@ Figure \ref{fig:emnaive_vs_better} shows   the time taken for both algorithms to
       \label{fig:emnaive_vs_better}
 \end{figure}
 
-\begin{figure}[!hb]
+\begin{figure}[!htb]
 
    \includegraphics[scale=0.5]{bruteforce_vs_better_logs.eps}
 
@@ -178,15 +178,14 @@ Lucky numbers, (more commonly referred to as Carmichael numbers \cite{carmichael
 \item All $n$'s prime factors are distinct.
 \item For each prime factor $p$ of $n$, $p - 1$ divides $n-1$ .
 \end{enumerate}
+ 
+\noindent Our aim is to write a function to compute the smallest lucky number which is greater than or equal to an arbitrary positive integer $N$. \\
 
-Our aim is to write a function to compute the smallest lucky number which is greater than or equal to an arbitrary positive integer $N$. 
-
-Firstly, some observations regarding the criterion.
+\noindent Firstly, some observations regarding the criterion.
 
 \begin{itemize}
 
-\item All prime factors of $n$ are odd $\iff$ $n$ is odd\\
- (since the only even prime is 2, and if $2$ divides $n$ then $n$ is even).\\
+\item All prime factors of $n$ are odd if and only if $n$ is odd (since the only even prime is 2, and if $2$ divides $n$ then $n$ is even).
  
  Hence if $n$ is even we can immediately rule out the possibility it is lucky.
 \item If we find one prime factor $p$ of $n$ such that $p -1$ \textbf{does not} divide $n-1$, we can rule that $n$ isn't a lucky number. Furthermore, there is no need to check the rest of the prime factors.
@@ -211,22 +210,20 @@ The implementation of the function is as follows.
 What remains, is to determine how we check if a given number is lucky. In the \texttt{luckynum} function in Listing \ref{luckynum}, we use the function \texttt{isLucky} which we will now explore.
 
   
-\subsection{The isLucky function}
+\subsection{The \texttt{isLucky} function}
 
 The full source is listed in Listing \ref{islucky}.
   \lstinputlisting[label={islucky}, caption={The isLucky function}] {../part2/isLucky.m}
   
-The approach here is to initialise the \texttt{result} variable to true, and then as soon as one of the checks on N fails (i.e. determines N isn't lucky),  \texttt{result} is set to false and crucially \emph{no other checks are performed}. 
-
-First we check if \texttt{N} is even, the reader may wonder why this is needed. Since the implementation of the \texttt{luckynum} function never calls \texttt{isLucky} with even numbers, hence this check is redundant. However we aim to produce reusable code, if we make use of the \texttt{isLucky} function in future, it may be called with an even number and so it is best practice to handle this correctly.
+First we check if \texttt{N} is even, the reader may wonder why this is needed. Since the implementation of the \texttt{luckynum} function never calls \texttt{isLucky} with even numbers, hence this check is redundant. However we aim to produce reusable code and if we make use of the \texttt{isLucky} function in future, it may be called with an even number and so it is best practice to handle this correctly.
 
 The order of the following checks is important, not in terms of correctness, but in terms of performance.  To check if the number is prime, we must only check if the number of factors is 1, which is the fastest of the operations we must perform.
 
-Here we take advantage of \emph{lazy evaluation} to save making comparisons we don't need to. In a logical test with arbitrary logical conditions $p$ and $q$;
+Here we take advantage of \emph{lazy evaluation} to save making comparisons we don't need to. In the following logical test with arbitrary logical conditions $p$ and $q$;
 
 \begin{verbatim}
-if p || q
-...
+                                if p || q
+                                ...
 \end{verbatim}
 
 If $p$ is evaluated to be true, then Octave knows that the whole expression must be true, and doesn't evaluate $q$. 
@@ -235,7 +232,7 @@ In this case, if our check, \texttt{factorsCount == 1} evaluates to false, only 
 
 The last, and clearly slowest check is the last  of the criterion for lucky numbers. Notice that we make use of our observation that we can stop if we find any factors without the desired property.
 
-The reader may notice that the most expensive operation in the implementation is the factorization of of \texttt{N} itself. Leading us to question if there are any more checks that can be performed before factorization. An alternative approach is to first check if the number is prime, and only factorize it if not.
+The reader may notice that the most expensive operation in the implementation is the factorization of \texttt{N} itself. Leading us to question if there are any more checks that can be performed before factorization. An alternative approach is to first check if the number is prime, and only factorize it if not.
 
 At first glance this seems a better solution since checking if a number is prime is faster than factorization. However, we must also consider that most numbers are not prime, so this check will fail more often than it passes, and it is in itself not a very fast operation. Hence the most common case is doing \emph{both} the factorization, and the primality check.
 
@@ -265,22 +262,20 @@ ans =  2465
 \section{Perfect Numbers}
 
 \subsection{Context}
-Given a positive integer $n$ we say that $n$ is \emph{perfect} if it's square consists of all the digits $1$ to $9$ exactly once. Importantly, it does \emph{not} include the digit $0$.
-
-For example, when $ n = 24237, $
+Given a positive integer $n$ we say that $n$ is \emph{perfect} if it's square consists of all the digits $1$ to $9$ exactly once. For example, when $ n = 24237, $
 
 $$ n^2 = 587432169 .$$
 
-So $24237$ is said to be a perfect number.
+\noindent So $24237$ is said to be a perfect number.
 
-The problem we're interested in solving is as follows, given an arbitrary integer $N$ with the following bounds,
+The problem we're interested in solving is as follows, given an arbitrary positive integer $N$ with the following bounds,
 
 \begin{equation} \label{rangeN}
 10^8 < N < 10^{9}.
 \end{equation}
 
 
-We seek the perfect number $n$ who's square is closest to $N$.
+\noindent We seek the perfect number $n$ who's square is closest to $N$.
 
 \subsection{The \texttt{isPerfect} function}
 
@@ -306,13 +301,13 @@ We have neglected so far to comment on the \texttt{int2Digits} function. Which r
 
 Now that we have a mechanism for determining if a given number is perfect, we can return to the original problem.
 
-Let $n_1, n_2, ..., n_k$ be the perfect numbers in ascending order without repetitions. Our approach will be to develop an algorithm under the assumption that N lies between the squares of two perfect numbers. So suppose  for some $i \in \{ 1,..,k-1 \}$
+Let $n_1, n_2, ..., n_k$ be the perfect numbers in ascending order without repetitions. Our approach will be to develop an algorithm under the assumption that $N$ lies between the squares of two perfect numbers. So suppose  for some $i \in \{ 1,..,k-1 \}$
 
 $$ {n_i}^2 \leq N \leq {n_{i+1}}^2. $$
 
-\emph{Then we will observe that our algorithm also returns the correct result for $N < {n_1}^2$ or $N > {n_k}^2$.} \\
+\emph{Then we will observe that our algorithm also returns the correct result if  $N < {n_1}^2$ or $N > {n_k}^2$.} \\
 
-Clearly, if $i<j \text{ then } n_i < n_j$, so;
+Clearly, if $i<j \text{ then } n_i < n_j$, so
 
 $$ {n_1}^2 < {n_2}^2 < ... < {n_i} ^2 \leq N \leq {n_{i+1}}^2 < ... < {n_k}^2.$$
 
@@ -322,13 +317,11 @@ Hence by taking square roots we obtain
  n_1 < n_2 < ... <  n_i \leq \lfloor \sqrt{N} \rfloor \leq n_{i+1} < ... < n_k.
 \end{equation}
 
-Recall that we defined $n$ to be the perfect number who's square is closest to $N$. Clearly, by Equation \ref{rootNbounds}, we know that either $n = n_i$ or $n = n_{i+1}$. 
-
-Let $A_j =\{  \lfloor \sqrt{N} \rfloor + j,  \lfloor \sqrt{N} \rfloor  - j \} .$
+Recall that we defined $n$ to be the perfect number who's square is closest to $N$. Clearly, by Equation \ref{rootNbounds}, we know that either $n = n_i$ or $n = n_{i+1}$. Let $A_j =\{  \lfloor \sqrt{N} \rfloor + j,  \lfloor \sqrt{N} \rfloor  - j \} .$
 
 Now we iterate through $A_0, A_1, A_2,...$. Observe that our target $n$, is an element of $A_q$ where $A_q$ is the first set we come across (i.e. minimal $q$) that contains a perfect number. If both elements are perfect, we take $n$ to be the one who's square is closest to $N$.
 
-Now notice that if originally $N < {n_1}^2$, then the correct answer is $n = n_1$. By iterating over the sets, eventually we'll get $n_1 \in A_j$ for some j. Similarly if $N > {n_k}^2$. Hence our algorithm is guaranteed to find the correct value of $n$. \\
+Now notice that if originally $N < {n_1}^2$, then the correct answer is $n = n_1$. By iterating over the sets, it's clear that the first set $A_j$ that contains a perfect number, contains $n_1$. Similarly if $N > {n_k}^2$. Hence our algorithm is guaranteed to find the correct value of $n$. \\
 
 The code listing is below (Listing \ref{perfnum}). In the code the sets aren't explicitly  defined, but the loop structure does iterate over their elements.
 
