@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  1 MAR 2019 21:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  3 MAR 2019 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -303,24 +303,24 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    ... okay on input line 17.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -417,128 +417,166 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 19.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(../part1/AppEmBruteForce.m
-LaTeX Font Info:    Try loading font information for OML+pcr on input line 9.
+
+LaTeX Warning: No \author given.
+
+(../part1/AppEmBruteForce.m [1
+
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OML+pcr on input line 11.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omlpcr.fd
 File: omlpcr.fd 
 )
 LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 9.
- [1
-
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
-
- []
-
-[2] (../part1/AppEm.m
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1pcr.fd
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-) [3]) [4]
-Package epstopdf Info: Source file: <bruteforce_vs_better.eps>
-(epstopdf)                    date: 2019-03-01 14:27:03
-(epstopdf)                    size: 19152 bytes
-(epstopdf)             Output file: <bruteforce_vs_better-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2019-03-01 14:27:08
-(epstopdf)                    size: 12885 bytes
-(epstopdf)             Command: <repstopdf --outfile=bruteforce_vs_better-eps-c
-onverted-to.pdf bruteforce_vs_better.eps>
-(epstopdf)             \includegraphics on input line 135.
-Package epstopdf Info: Output file is already uptodate.
-
-<bruteforce_vs_better-eps-converted-to.pdf, id=29, 578.16pt x 433.62pt>
-File: bruteforce_vs_better-eps-converted-to.pdf Graphic file (type pdf)
-
-<use bruteforce_vs_better-eps-converted-to.pdf>
-Package pdftex.def Info: bruteforce_vs_better-eps-converted-to.pdf used on inpu
-t line 135.
-(pdftex.def)             Requested size: 346.89867pt x 260.17401pt.
- (../part1/part1.m) [5 <./bruteforce_vs_better-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 183--185
-
- []
-
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 190.
-[6] (../part2/luckynum.m) (../part2/isLucky.m
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 16.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 11.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 17.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
-) [7]
-Package epstopdf Info: Source file: <islucky_test.eps>
-(epstopdf)                    date: 2019-02-23 16:08:51
-(epstopdf)                    size: 11819 bytes
-(epstopdf)             Output file: <islucky_test-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-02-23 16:08:55
-(epstopdf)                    size: 8059 bytes
-(epstopdf)             Command: <repstopdf --outfile=islucky_test-eps-converted
--to.pdf islucky_test.eps>
-(epstopdf)             \includegraphics on input line 240.
-Package epstopdf Info: Output file is already uptodate.
-
-<islucky_test-eps-converted-to.pdf, id=52, 578.16pt x 433.62pt>
-File: islucky_test-eps-converted-to.pdf Graphic file (type pdf)
-
-<use islucky_test-eps-converted-to.pdf>
-Package pdftex.def Info: islucky_test-eps-converted-to.pdf used on input line 2
-40.
-(pdftex.def)             Requested size: 346.89867pt x 260.17401pt.
- [8] [9 <./islucky_test-eps-converted-to.pdf>] (../part3/isPerfect.m) [10]
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+(../part1/AppEm.m [3]
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)) [4]
+Package epstopdf Info: Source file: <bruteforce_vs_better.eps>
+(epstopdf)                    date: 2019-03-02 10:26:47
+(epstopdf)                    size: 17039 bytes
+(epstopdf)             Output file: <bruteforce_vs_better-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2019-03-02 10:26:54
+(epstopdf)                    size: 12308 bytes
+(epstopdf)             Command: <repstopdf --outfile=bruteforce_vs_better-eps-c
+onverted-to.pdf bruteforce_vs_better.eps>
+(epstopdf)             \includegraphics on input line 138.
+Package epstopdf Info: Output file is already uptodate.
+
+<bruteforce_vs_better-eps-converted-to.pdf, id=32, 578.16pt x 433.62pt>
+File: bruteforce_vs_better-eps-converted-to.pdf Graphic file (type pdf)
+
+<use bruteforce_vs_better-eps-converted-to.pdf>
+Package pdftex.def Info: bruteforce_vs_better-eps-converted-to.pdf used on inpu
+t line 138.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+Package epstopdf Info: Source file: <bruteforce_vs_better_logs.eps>
+(epstopdf)                    date: 2019-03-02 10:23:14
+(epstopdf)                    size: 64387 bytes
+(epstopdf)             Output file: <bruteforce_vs_better_logs-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2019-03-02 10:23:21
+(epstopdf)                    size: 22902 bytes
+(epstopdf)             Command: <repstopdf --outfile=bruteforce_vs_better_logs-
+eps-converted-to.pdf bruteforce_vs_better_logs.eps>
+(epstopdf)             \includegraphics on input line 146.
+Package epstopdf Info: Output file is already uptodate.
+
+<bruteforce_vs_better_logs-eps-converted-to.pdf, id=33, 578.16pt x 433.62pt>
+File: bruteforce_vs_better_logs-eps-converted-to.pdf Graphic file (type pdf)
+
+<use bruteforce_vs_better_logs-eps-converted-to.pdf>
+Package pdftex.def Info: bruteforce_vs_better_logs-eps-converted-to.pdf used on
+ input line 146.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+ (../part1/part1.m)
+[5] [6 <./bruteforce_vs_better-eps-converted-to.pdf> <./bruteforce_vs_better_lo
+gs-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 188--190
+
+ []
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 195.
+(../part2/luckynum.m [7]) (../part2/isLucky.m) [8]
+Package epstopdf Info: Source file: <islucky_test.eps>
+(epstopdf)                    date: 2019-03-03 10:32:59
+(epstopdf)                    size: 25831 bytes
+(epstopdf)             Output file: <islucky_test-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-03-03 10:33:13
+(epstopdf)                    size: 12740 bytes
+(epstopdf)             Command: <repstopdf --outfile=islucky_test-eps-converted
+-to.pdf islucky_test.eps>
+(epstopdf)             \includegraphics on input line 248.
+Package epstopdf Info: Output file is already uptodate.
+
+<islucky_test-eps-converted-to.pdf, id=62, 578.16pt x 433.62pt>
+File: islucky_test-eps-converted-to.pdf Graphic file (type pdf)
+
+<use islucky_test-eps-converted-to.pdf>
+Package pdftex.def Info: islucky_test-eps-converted-to.pdf used on input line 2
+48.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+ [9 <./islucky_test-eps-converted-to.pdf>] (../part3/isPerfect.m) [10]
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
 (../part3/PerfNum.m [11]) (../part3/testWorstCase.m)
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 355.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 362.
 
 (../part2/isLuckyAlternative.m [12]) (../part3/int2Digits.m) [13] (./report.aux
 ) ) 
 Here is how much of TeX's memory you used:
- 5406 strings out of 492995
- 74985 string characters out of 6132705
- 207855 words of memory out of 5000000
- 8833 multiletter control sequences out of 15000+600000
- 9980 words of font info for 39 fonts, out of 8000000 for 9000
+ 5432 strings out of 492995
+ 75443 string characters out of 6132705
+ 240867 words of memory out of 5000000
+ 8852 multiletter control sequences out of 15000+600000
+ 13714 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,9n,42p,439b,1591s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,9n,42p,577b,1591s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
 c}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
@@ -548,21 +586,22 @@ ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
 017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
-7/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-dist/f
-onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (13 pages, 236833 bytes).
+7/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/urw/courier/ucrr8a.pfb>
+Output written on report.pdf (13 pages, 278360 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 147 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

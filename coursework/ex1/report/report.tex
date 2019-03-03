@@ -8,13 +8,15 @@
 \usepackage{verbatim}
 \usepackage[margin=1.4in]{geometry}
 
-\newcommand*{\gam}{$\gamma \text{ }$}
+\newcommand*{\gam}{$\gamma$}
 \newcommand*{\gami}{$\gamma_{i}$}
 \newcommand*{\pdivq}{$\frac{p}{q} \text{ }$}
+\newcommand{\inlinemaketitle}{{\let\newpage\relax\maketitle}}
 
+\title{PSBC Project 1}
 \begin{document}
 
-
+\inlinemaketitle
 \section{Introduction}
 
 This report details the approach and implementation details relating to the first coursework project of MATH36032. Please note that all programming and testing was carried out using GNU Octave rather than MATLAB.
@@ -24,7 +26,7 @@ This report details the approach and implementation details relating to the firs
 The Euler-Mascheroni constant is a mathematical constant that first appeared in Euler's writings in 1735. It is usually denoted \gam, first appearing thus in a paper by Mascheroni in 1790 \cite{eulerconst}. Formally, it is defined as follows.
 
 \begin{equation}
-\gamma = \lim_{n \to \infty}  \left( -\ln{n} + \sum_{k=0}^{n} \frac{1}{k}  \right).
+\gamma = \lim_{n \to \infty}  \left( -\ln{n} + \sum_{k=0}^{n} \frac{1}{k}  \right) \approx 0.577215664901533.
 \end{equation}
 
 Very little is known about this constant, it isn't even known whether or not it is rational. Hence it is often convenient to approximate it's value to a quotient of positive integers, which we will denote $ \frac{p}{q}$. However, if \gam is indeed irrational, for each $p$, $q$ we find, we'll be able to find another pair, who's ratio is closer to \gam. The question becomes, which integers do we choose?
@@ -35,9 +37,9 @@ Let's introduce an arbitrary integer $N$, we will aim to find a quotient of inte
 
 The approach we will to solve this problem is to first look at a brute force method. Which is to try ever possible combination of $p$ and $q$ and see which one minimises $ | \gamma - \frac{p}{q} |$. Then we will aim to optimise this approach.
 
-  \lstinputlisting[label={bruteforce_code}, caption={A Brute force implementation to find p and q}] {../part1/AppEmBruteForce.m}
+  \lstinputlisting[label={bruteforce_code}, caption={A Brute force implementation to find p and q.}] {../part1/AppEmBruteForce.m}
 
-The first thing we notice about the code in Listing \ref{bruteforce_code} is it's inefficency. In Big-O notation we refer to this as being $O(N^2)$. Since an increase in $N$ results in an increase proportional to $N^2$ in the number of operations performed.
+The first thing we notice about the code in Listing \ref{bruteforce_code} is it's inefficency. In Big-O notation we refer to this as being $O(N^2)$. Since the number of operations performed is proportional to $N^2$.
 
 \subsection{Optimizing}
 We can do better than this. The aim here, is for a given $q$, to limit the values of $p$ that we need to check. 
@@ -63,21 +65,21 @@ Formally we have the following two equations.
 p_{i+1} + q_{i+1} < p_i + q_i.
 \end{equation}
 
-From here, we need to make the assumption that \gam is in fact irrational. The justification for this is that if \gam is rational, then we can define it exactly as a quotient of integers, making the whole aim redundant. 
+From here, we need to make the assumption that $\gamma$ is in fact irrational. The justification for this is that if $\gamma$ is rational, then we can define it exactly as a quotient of integers, making the whole exercise redundant. 
 
-In this case we can see that if equation \ref{equalgammas} holds, then since \gam is irrational must be the case that both $\gamma_{i}$ and $\gamma_{i+1}$ are less than \gam, or they're both greater than \gam. Since if one was greater than \gam and one less, it would contradict \gam being irrational.
+In this case we can see that if Equation \ref{equalgammas} holds, it must be the case that both $\gamma_{i}$ and $\gamma_{i+1}$ are less than \gam, or they're both greater than $\gamma$. Since if one was greater than $\gamma$ and one less, then equation  \ref{equalgammas} would contradict $\gamma$ being irrational.
 
 This directly implies that
 
 $$ \gamma_{i+1} = \gamma_{i}  \implies \frac{p_i}{q_i} = \frac{p_{i+1}}{q_{i+1}}.$$
 
-However, the variable \texttt{q} in the code is strictly increasing. Hence the sequence of $q_i$ is strictly increasing. So $q_i < q_{i+1}$. It then follows directly that $p_i < p_{i+1}$ and hence $p_i + q_i < p_{i+1} + q_{i+1}$. This contradicts equation \ref{contradiction}.
+However, the variable \texttt{q} in the code is strictly increasing. Hence the sequence of $q_i$ is strictly increasing. So $q_i < q_{i+1}$. It then follows directly that $p_i < p_{i+1}$ and hence $p_i + q_i < p_{i+1} + q_{i+1}$. This contradicts Equation \ref{contradiction}.
 
 Hence we can see that this case will never actually occur in practice. This means we can define the next term in our sequence as in \emph{case 2}. \\
 
 \noindent \textbf{Case 2} \\
 
-Given the argument in \emph{case 1}. We know that $\gamma_{i+1}$ will be closer to the real \gam than \gami, since otherwise it wouldn't be one of the sequence. Hence
+Given the argument in \emph{case 1}. We know that $\gamma_{i+1}$ will be strictly closer to the real $\gamma$ than \gami, since otherwise it wouldn't be one of the sequence. Hence
 
 $$ |\gamma- \gamma_{i+1}| < |\gamma - \gamma_{i}| .$$
 
@@ -85,7 +87,7 @@ Another way of saying this is as follows. Let $\delta_{i} = | \gamma - \gamma_i 
 
 $$ \gamma - \delta_i < \gamma_{i+1} < \gamma + \delta_i .$$
 
-Now if we substitute equation \ref{defgammai} and multiply through by $q_{i+1}$, the result is
+Now if we substitute Equation \ref{defgammai} and multiply through by $q_{i+1}$, the result is
 
 \begin{equation} \label{em_constraint}
 q_{i+1} (\gamma - \delta_i) < p_{i+1} < q_{i+1} ( \gamma + \delta_i ).
@@ -93,54 +95,59 @@ q_{i+1} (\gamma - \delta_i) < p_{i+1} < q_{i+1} ( \gamma + \delta_i ).
 
 What we have now, is for a given $q$ we have a bound on the possible values of $p$ we need to check. Furthermore, we have a way of tightening the bound every time we find a new approximation for \gam.
 
-However, to find $\gamma_0$ currently we still have to check all possible values of $p$ when $q = 1$ since we don't yet have a current best approximation. Notice that $N = 1,2$ are valid inputs, but the results are
+Observe that to find $\gamma_1$, it seems we still have to check all possible values of $p$ when $q = 1$ since we don't yet have a current best approximation. Notice that $N = 1,2$ are valid inputs, but the results are
 
 $$ \frac{p}{q} = \frac{0}{1} \text{  and  }  \frac{p}{q} = \frac{1}{ 1} \text{ respectively}. $$
 
 Which are not useful approximations of \gam.
- However, for $N \geq 3$, observe that $\gamma_0 = \frac{1}{2}$. Hence we can just hard-code this initial value. This does mean treating \textbf{trivial values of N} ($N = 1,2$) as a special case, but which is worth it for the saved calculations.
+ However, for $N \geq 3$, observe that $\gamma_1 = \frac{1}{2}$. Hence we can just hard-code this initial value. This does mean treating \textbf{trivial values of N} ($N = 1,2$) as a special case.
 
 \emph{The reader may note at this point that it is often considered bad practice to hard-code values like this, as it sometimes effects flexiblilty. However, I argue that in this instance, we are hard-coding the value of a base case in our sequence of \gami $ $ values, and that it's performance improvement, combined with the legibility of the code makes it an acceptable approach.}
 
-Given this justification, the code listing is as follows.
+Given this justification, the code listing is as follows. \\ \\ \\
 
-  \lstinputlisting[label={appem_code}, caption={An optimized implementation to find p and q}] {../part1/AppEm.m}
+  \lstinputlisting[label={appem_code}, caption={An optimized implementation to find p and q.}] {../part1/AppEm.m}
 
-There is one further optimization in Listing \ref{appem_code} that hasn't yet been discussed. This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed the variable \texttt{q} to run from 1 to \texttt{N}, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation.
+There is one further optimization in Listing \ref{appem_code} that hasn't yet been discussed. This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed the variable \texttt{q} to run from 1 to \texttt{N}, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation, suggesting we should be able to define an upper bound on $q$ which is less than $N$.
 
-This suggests we should be able to find
-
-Let's return to equation \ref{em_constraint}. If we look at the left hand side of this constraint;
+Indeed, by returning to Equation \ref{em_constraint}. If we look at the left hand side of this constraint;
 
 $$q_{i+1} (\gamma - \delta_i) < p_{i+1} ,$$
 
-and recall our original constraint for each $p$ and $q$,
-$$ p_i + q_i \leq N .$$
+and recall our original constraint for each $p_j$ and $q_j$,
+$$ p_j + q_j \leq N .$$
 
 Combining these equations yields
 
-$$ q_i (\gamma - \delta_i) < p_i \leq N - q_i $$ 
-$$ \implies  q_i (\gamma - \delta_i) \leq N - q_i $$ 
-$$ \implies q_i (\gamma - \delta_i + 1) \leq N  $$ 
-$$ \implies q_i  \leq \frac{N}{(\gamma - \delta_i + 1)}  $$ 
+$$ q_{i+1} (\gamma - \delta_i) < p_{i+1} \leq N - q_{i+1}$$ 
+$$ \implies  q_{i+1} (\gamma - \delta_i) \leq N - q_{i+1} $$ 
+$$ \implies q_{i+1} (\gamma - \delta_i + 1) \leq N  $$ 
+$$ \implies q_{i+1}  \leq \frac{N}{(\gamma - \delta_i + 1)}  $$ 
 
-So everytime we find a new approximation for \gam, we can also update the maximal possible value of $q$ (\texttt{qMax} in listing \ref{appem_code}). In practice this provides less of an optimization than the constraining of $p$, but for large $N$, does have a noticeable effect.
+So everytime we find a new approximation for \gam, we can also update the maximal possible value of $q$ (\texttt{qMax} in Listing \ref{appem_code}). In practice this provides less of an optimization than the constraining of $p$, but for large $N$ this does have a noticeable effect.
 
 \subsection{Performance}
 
-The performance improvement in our optimization has proven to be more than acceptable. Recall how we classified the original algorithm (Listing \ref{bruteforce_code}) to be an $O(N^2)$ algorithm. The following experiment show that the optimized version resembles an $O(N)$ time complexity. Informally, as $N$ gets larger, the time for the algorithm to terminate increases in a linear fashion.
+The performance improvement in our optimization has proven to be more than acceptable. Recall how we classified the original algorithm (Listing \ref{bruteforce_code}) to be an $O(N^2)$ algorithm. The following experiments show that the optimized version resembles an $O(N)$ time complexity.
 
-\begin{figure}[ht]
 
-   \includegraphics[scale=0.6]{bruteforce_vs_better.eps}
+Figure \ref{fig:emnaive_vs_better} shows   the time taken for both algorithms to complete for the input $N$ from 1 to 250. It appears to support our claim, but to further confirm the validity of our analysis, figure \ref{loglog} shows the logs of the values in figure \ref{fig:emnaive_vs_better} on logarithmic axes. The gradients of the lines approximating the brute force curve and optimized curve are \textbf{1.9} and \textbf{0.9}, respectively. This is almost exactly what we'd expect from taking the logs of quadratic and linear plots.
 
-   \caption{A performance comparison between the brute force algorithm and the optimized version}
+\begin{figure}[!hb]
+
+   \includegraphics[scale=0.5]{bruteforce_vs_better.eps}
+
+   \caption{A performance comparison between the brute force algorithm and the optimized version.}
       \label{fig:emnaive_vs_better}
 \end{figure}
 
+\begin{figure}[!hb]
 
-Figure \ref{fig:emnaive_vs_better} shows this. It shows the time taken for both algorithms to complete for the input $N$ from 1 to 300.
+   \includegraphics[scale=0.5]{bruteforce_vs_better_logs.eps}
 
+   \caption{A graph of the logs of the curves in figure \ref{fig:emnaive_vs_better}, plotted on logarithmic axes. The axis scales are omitted since the important feature here is the gradient of the lines.}
+      \label{loglog}
+\end{figure}
 
 \subsection{A specific example}
 
@@ -160,8 +167,6 @@ q =  395
 Elapsed time is 18.8509 seconds.
 \end{verbatim}
 
-We see the output from both approaches are in agreement, and that the optimizations result in an almost 400 times speed up.
-
 \section{Lucky numbers}
 
 \subsection{Context}
@@ -171,7 +176,7 @@ Lucky numbers, (more commonly referred to as Carmichael numbers \cite{carmichael
 \item The integer $n$ is not prime.
 \item All the prime factors of $n$ are odd.
 \item All $n$'s prime factors are distinct.
-\item For each prime factor $p$ of $n$, $p - 1$ divides $n-1$ 
+\item For each prime factor $p$ of $n$, $p - 1$ divides $n-1$ .
 \end{enumerate}
 
 Our aim is to write a function to compute the smallest lucky number which is greater than or equal to an arbitrary positive integer $N$. 
@@ -181,10 +186,10 @@ Firstly, some observations regarding the criterion.
 \begin{itemize}
 
 \item All prime factors of $n$ are odd $\iff$ $n$ is odd\\
- (since the only even prime is 2, and if $2|n$ then $n$ is even).\\
+ (since the only even prime is 2, and if $2$ divides $n$ then $n$ is even).\\
  
  Hence if $n$ is even we can immediately rule out the possibility it is lucky.
-\item Given a list of the prime factors of $n$, if we find one prime factor $p$ such that $p -1 \nmid n-1$, we can rule the number isn't a lucky number, and there is no need to check the rest of the prime factors.
+\item If we find one prime factor $p$ of $n$ such that $p -1$ \textbf{does not} divide $n-1$, we can rule that $n$ isn't a lucky number. Furthermore, there is no need to check the rest of the prime factors.
 \end{itemize}
 
 \subsection{The \texttt{luckynum} function}
@@ -197,13 +202,13 @@ $$ s = \begin{cases}
             \end{cases}
 $$
 
-Of course if this number is lucky, then we're done. But if not, what is the next number we must check? Notice that $s + 1$ must be even, since $s$ is odd by construction. We have already observed that even numbers can't be lucky. So the next number to check is $s+2$. This pattern continues as we iterate, we can increment the number being checked by 2 each time, avoiding even numbers.
+Of course if this number is lucky, then we're done. But if not, what is the next number we must check? Notice that $s + 1$ must be even, since $s$ is odd by construction. We have already observed that even numbers can't be lucky. So the next number to check is $s+2$. This pattern continues as we iterate. We can increment the number being checked by 2 each time, avoiding even numbers.
 
 The implementation of the function is as follows. 
 
   \lstinputlisting[label={luckynum}, caption={The luckynum function}] {../part2/luckynum.m}
 
-What remains, is to explore how we actually check if a given number $n$ is lucky. In the \texttt{luckynum} function in Listing \ref{luckynum} we use the function \texttt{isLucky} which we will now explore.
+What remains, is to determine how we check if a given number is lucky. In the \texttt{luckynum} function in Listing \ref{luckynum}, we use the function \texttt{isLucky} which we will now explore.
 
   
 \subsection{The isLucky function}
@@ -215,9 +220,9 @@ The approach here is to initialise the \texttt{result} variable to true, and the
 
 First we check if \texttt{N} is even, the reader may wonder why this is needed. Since the implementation of the \texttt{luckynum} function never calls \texttt{isLucky} with even numbers, hence this check is redundant. However we aim to produce reusable code, if we make use of the \texttt{isLucky} function in future, it may be called with an even number and so it is best practice to handle this correctly.
 
-The order of the following checks is important, not in terms of correctness, but in terms of performance.  \texttt{N} is first factorized and the result stored. To check if the number is prime, we must only check if the number of factors is 1, which is the fastest of the operations we must perform.
+The order of the following checks is important, not in terms of correctness, but in terms of performance.  To check if the number is prime, we must only check if the number of factors is 1, which is the fastest of the operations we must perform.
 
-Here we take advantage of \emph{lazy evaluation} to save making comparisons we don't need to. In a logical test with arbitrary logical conditions $p$ and $q$
+Here we take advantage of \emph{lazy evaluation} to save making comparisons we don't need to. In a logical test with arbitrary logical conditions $p$ and $q$;
 
 \begin{verbatim}
 if p || q
@@ -228,23 +233,25 @@ If $p$ is evaluated to be true, then Octave knows that the whole expression must
 
 In this case, if our check, \texttt{factorsCount == 1} evaluates to false, only then do we check if the prime factors are unique. If the \texttt{factorsCount} was 1, the \texttt{if} statement wouldn't evaluate the second condition.
 
-The last, and clearly slowest check is the last  of the criterion for lucky numbers. Notice that we make use of our observation that we can stop if we find any factors without the desired property. In the code, this is achieved with a break in the loop.
+The last, and clearly slowest check is the last  of the criterion for lucky numbers. Notice that we make use of our observation that we can stop if we find any factors without the desired property.
 
-The reader may notice that the most expensive operation in the implementation is the factorization of of $N$ itself and whether there are any checks we could make before this. An alternative approach is to first check if the number is prime, and only if it is not do we do the factorization. 
+The reader may notice that the most expensive operation in the implementation is the factorization of of \texttt{N} itself. Leading us to question if there are any more checks that can be performed before factorization. An alternative approach is to first check if the number is prime, and only factorize it if not.
 
 At first glance this seems a better solution since checking if a number is prime is faster than factorization. However, we must also consider that most numbers are not prime, so this check will fail more often than it passes, and it is in itself not a very fast operation. Hence the most common case is doing \emph{both} the factorization, and the primality check.
 
 
-\begin{figure}
+The implementation of this alternative approach is listed in Appendix \ref{islucky_appendix}, but more importantly Figure \ref{isluckytest} shows a performance comparison between the two approaches. We can see clearly that our original approach is generally faster, especially for larger inputs.
 
-   \includegraphics[scale=0.6]{islucky_test.eps}
 
-   \caption{A performance comparison between isLucky and isLuckyAlternative. Note that the even values of x where skipped in producing the data in order to make it more legible, since both functions treat even numbers in the same way}
+\begin{figure}[h]
+
+   \includegraphics[scale=0.5]{islucky_test.eps}
+
+   \caption{A performance comparison between \texttt{isLucky} and \texttt{isLuckyAlternative}.}
       \label{isluckytest}
 \end{figure}
 
 
-The implementation of this alternative approach is listed in Appendix \ref{islucky_appendix}, but more importantly Figure \ref{isluckytest} shows a performance comparison between the two approaches. We can see clearly that our original approach is the more efficient in the general case.
 
 \subsection{A specific example}
 
@@ -266,7 +273,7 @@ $$ n^2 = 587432169 .$$
 
 So $24237$ is said to be a perfect number.
 
-The problem we're interested in solving is as follows, given an arbitrary integer $N$,  
+The problem we're interested in solving is as follows, given an arbitrary integer $N$ with the following bounds,
 
 \begin{equation} \label{rangeN}
 10^8 < N < 10^{9}.
@@ -281,7 +288,7 @@ Firstly, we need a way of checking whether a given integer $n$ is perfect. The f
 
  \lstinputlisting[label={isperfect}, caption={The \texttt{isPerfect} function}] {../part3/isPerfect.m}
  
-Firstly we convert the square of the input \texttt{value} to a vector of it's digits. Once again we make use of the lazy evaluation property of the language. We see that three checks are made on the digits.
+Once again we make use of the lazy evaluation property of the language. We see that three checks are made on the digits.
  
  \begin{itemize}
  \item Checking there are 9 digits exactly.
@@ -301,7 +308,7 @@ Now that we have a mechanism for determining if a given number is perfect, we ca
 
 Let $n_1, n_2, ..., n_k$ be the perfect numbers in ascending order without repetitions. Our approach will be to develop an algorithm under the assumption that N lies between the squares of two perfect numbers. So suppose  for some $i \in \{ 1,..,k-1 \}$
 
-$$ {n_i}^2 \leq N \leq {n_{i+1}}^2 $$
+$$ {n_i}^2 \leq N \leq {n_{i+1}}^2. $$
 
 \emph{Then we will observe that our algorithm also returns the correct result for $N < {n_1}^2$ or $N > {n_k}^2$.} \\
 
@@ -315,11 +322,11 @@ Hence by taking square roots we obtain
  n_1 < n_2 < ... <  n_i \leq \lfloor \sqrt{N} \rfloor \leq n_{i+1} < ... < n_k.
 \end{equation}
 
-Recall that we defined $n$ to be the perfect number who's square is closest to $N$. Clearly, by equation \ref{rootNbounds}, we know that either $n = n_i$ or $n = n_{i+1}$. 
+Recall that we defined $n$ to be the perfect number who's square is closest to $N$. Clearly, by Equation \ref{rootNbounds}, we know that either $n = n_i$ or $n = n_{i+1}$. 
 
-Let $A_j =\{  \lfloor \sqrt{N} \rfloor + j,  \lfloor \sqrt{N} \rfloor  - j \} $
+Let $A_j =\{  \lfloor \sqrt{N} \rfloor + j,  \lfloor \sqrt{N} \rfloor  - j \} .$
 
-Now we iterate through $A_0, A_1, A_2,...$. Observe that our target $n$ is an element of $A_q$ where $A_q$ is the first set we come across (i.e. minimal $q$) that contains a perfect number. If both elements are perfect, we take $n$ to be the one who's square is closest to $N$.
+Now we iterate through $A_0, A_1, A_2,...$. Observe that our target $n$, is an element of $A_q$ where $A_q$ is the first set we come across (i.e. minimal $q$) that contains a perfect number. If both elements are perfect, we take $n$ to be the one who's square is closest to $N$.
 
 Now notice that if originally $N < {n_1}^2$, then the correct answer is $n = n_1$. By iterating over the sets, eventually we'll get $n_1 \in A_j$ for some j. Similarly if $N > {n_k}^2$. Hence our algorithm is guaranteed to find the correct value of $n$. \\
 
@@ -327,7 +334,7 @@ The code listing is below (Listing \ref{perfnum}). In the code the sets aren't e
 
  \lstinputlisting[label={perfnum}, caption={The \texttt{PerfNum} function}] {../part3/PerfNum.m}
  
-For this function the assumption in equation \ref{rangeN} is made. Hence the worst case performance of this function is when \texttt{N} is exactly between the squares of the two consecutive perfect numbers which have the most distance between them. We can fairly easily work out that these are $20316$ and $22887$. 
+For this function the assumption in Equation \ref{rangeN} is made. Hence the worst case performance of this function is when \texttt{N} is exactly between the squares of the perfect numbers $n_i$ and $n_{i+1}$ which have the most distance between them. We can fairly easily work out that these are $20316$ and $22887$. 
 
 Let's try the worst case value of \texttt{N}, which we can work out from this is \texttt{N = 468277312}.
 
@@ -336,7 +343,7 @@ Let's try the worst case value of \texttt{N}, which we can work out from this is
  \begin{verbatim}
  >> testWorstCase
 ans =  22887
-Elapsed time is 0.959387 seconds.
+Elapsed time is 0.859387 seconds.
 \end{verbatim}
 
 It's clear that the function in the very worst case still runs in under a second, hence for any valid input it will return in an acceptable amount of time.

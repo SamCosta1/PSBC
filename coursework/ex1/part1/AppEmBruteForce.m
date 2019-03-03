@@ -6,12 +6,16 @@ function [p, q] = AppEmBruteForce(N)
   
   % Try every valid combination of p and q
   for q = 1:N   
-    % Bound p by N - q so that p + q <= N
-    for p = 1:N-q    
+    for p = 1:N   
      
+      if (p + q > N) 
+        continue;
+      end
+      
       diffToEM = abs(p / q - emConstant);
 
-      if (diffToEM < currentBestDiff)
+      if (diffToEM < currentBestDiff || 
+          (diffToEM == currentBestDiff && p < currentBestPQ(1)))
         currentBestDiff = diffToEM;
         currentBestPQ = [p, q];        
       end
