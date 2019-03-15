@@ -1,0 +1,2 @@
+function dzdt = modelODE(t, z, burrowPos,  rabbitSpeed, foxSpeed, warehouseNW, warehouseSW)  % z = [Rx, Ry, Fx, Fy]dzdt = zeros(size(z));rabbitDiff = burrowPos - z(1:2);rabbitRatio = (rabbitDiff(1) / rabbitDiff(2))^2;dzdt(1) = rabbitSpeed / sqrt(1 + rabbitRatio);dzdt(2) = rabbitSpeed * rabbitRatio / sqrt(1 + rabbitRatio);% Aim for the foxfoxDiff = z(1:2) - z(3:4);foxRatio = (foxDiff(1) / foxDiff(2)) ^ 2;dzdt(3) = foxSpeed / sqrt(1 + foxRatio);dzdt(4) = foxSpeed * foxSpeed / sqrt(1 + foxRatio);
+endfunction

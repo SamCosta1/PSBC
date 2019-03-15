@@ -7,6 +7,8 @@
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage[margin=1.4in]{geometry}
+\usepackage{graphicx}
+
 \usepackage{verbatimbox}
 \newcommand*{\gam}{$\gamma$}
 \newcommand*{\gami}{$\gamma_{i}$}
@@ -19,30 +21,30 @@
 \inlinemaketitle
 \section{Introduction}
 
-This report details the approach and implementation details relating to the first coursework project of MATH36032. Please note that all programming and testing was carried out using GNU Octave rather than MATLAB.
+This report details the approach and implementation relating to the first coursework project of MATH36032. Please note that all programming and testing was carried out using GNU Octave rather than MATLAB.
 \section{The Euler-Mascheroni constant}
 
 \subsection{Context}
-The Euler-Mascheroni constant is a mathematical constant that first appeared in Euler's writings in 1735. It is usually denoted \gam, first appearing thus in a paper by Mascheroni in 1790 \cite{eulerconst}. Formally, it is defined as follows.
+The Euler-Mascheroni constant is a mathematical constant that first appeared in Euler's writings in 1735. It is usually represented \gam, as denoted in a paper by Mascheroni in 1790 \cite{eulerconst}. Formally, it is defined as follows
 
 \begin{equation}
 \gamma = \lim_{n \to \infty}  \left( -\ln{n} + \sum_{k=0}^{n} \frac{1}{k}  \right) \approx 0.577215664901533.
 \end{equation}
 
-Very little is known about this constant, it isn't even known whether or not it is rational. Hence it is often convenient to approximate it's value to a quotient of positive integers, which we will denote $ \frac{p}{q}$. However, if $\gamma$ is indeed irrational, for each $p$, $q$ we find, we'll be able to find another pair, who's ratio is closer to \gam. The question becomes, which integers do we choose?
+Very little is known about this constant, it isn't even known whether or not it is rational. Hence, it is often convenient to approximate its value to a quotient of positive integers, which we will denote $ \frac{p}{q}$. However, if $\gamma$ is indeed irrational, for each $p$, $q$ we find, we'll be able to find another pair, whose ratio is closer to \gam. The question becomes which integers do we choose?
 
-Let's introduce an arbitrary integer $N$. We will aim to find a quotient of integers \pdivq such that $p + q \leq N$. Where \pdivq is the best approximation of $\gamma$ with this constraint. Furthermore, where there are multiple pairs that give the best approximation, we will take the pair with the smallest value of $p+q$.
+Let's introduce an arbitrary integer $N$. We will aim to find a quotient of integers \pdivq such that $p + q \leq N$, where \pdivq is the best approximation of $\gamma$ with this constraint. Furthermore, where there are multiple pairs that give the best approximation, we will take the pair with the smallest value of $p+q$.
 
 \subsection{The brute force approach}
 
-The approach we will to solve this problem is to first look at a brute force method. Which is to try ever possible combination of $p$ and $q$ and see which one minimises $ | \gamma - \frac{p}{q} |$. Then we will aim to optimise this approach.
+The approach we will use to solve this problem is to first look at a brute force method, which is to try ever possible combination of $p$ and $q$ and see which one minimises $ | \gamma - \frac{p}{q} |$. We will then aim to optimise this approach.
 
   \lstinputlisting[label={bruteforce_code}, caption={A Brute force implementation to find p and q.}] {../part1/AppEmBruteForce.m}
 
-The first thing we notice about the code in Listing \ref{bruteforce_code} is it's inefficency. In Big-O notation we refer to this as being $O(N^2)$. Since the number of operations performed is proportional to $N^2$.
+The first thing we notice about the code in Listing \ref{bruteforce_code} is its inefficency. In Big-O notation we refer to this as being $O(N^2)$, since the number of operations performed is proportional to $N^2$.
 
 \subsection{Optimizing}
-We can do better than this. The aim here, is for a given $q$, to limit the values of $p$ that we need to check. 
+The approach to our optimization will be as follows. For a given $q$, we aim limit the values of $p$ that we need to check. 
 
 First we will set up some notation. Notice that in Listing \ref{bruteforce_code}, when we find a better approximation, we update the \texttt{currentBestPQ} variable. Let's denote $p_0$, $q_0$  as the first values of this variable, and $p_i$, $q_i$ to be the $i^{th}$ values of this variable. Hence the final value in this sequence is our answer. Let
 
@@ -51,11 +53,11 @@ First we will set up some notation. Notice that in Listing \ref{bruteforce_code}
 \end{equation}
 
 
-Lets assume we already have a \gami.  There are two possibilities. Either, $\gamma_{i+1}$ is an equally good approximation, but  $p_{i+1} + q_{i+1} < p_i + q_i$. Or $\gamma_{i+1}$ is closer to $\gamma$ than \gami. \\
+Let's assume we already have a \gami.  There are two possibilities. Either, $\gamma_{i+1}$ is an equally good approximation, but  $p_{i+1} + q_{i+1} < p_i + q_i$. Or $\gamma_{i+1}$ is closer to $\gamma$ than \gami. \\
 
 \noindent \textbf{Case 1 } \\
 
-Formally we have the following two equations.
+Formally, we have the following two equations.
 
 \begin{equation}\label{equalgammas}
 |\gamma- \gamma_{i+1}| = |\gamma - \gamma_{i}| ,
@@ -79,7 +81,7 @@ Hence we can see that this case will never actually occur in practice. This mean
 
 \noindent \textbf{Case 2} \\
 
-Given the argument in \emph{case 1}. We know that $\gamma_{i+1}$ will be strictly closer to the real $\gamma$ than \gami, since otherwise it wouldn't be one of the sequence. Hence
+Given the argument in \emph{case 1}, we know that $\gamma_{i+1}$ will be strictly closer to the real $\gamma$ than \gami, since otherwise it wouldn't be one of the sequence. Hence
 
 $$ |\gamma- \gamma_{i+1}| < |\gamma - \gamma_{i}| .$$
 
@@ -102,15 +104,15 @@ $$ \frac{p}{q} = \frac{0}{1} \text{  and  }  \frac{p}{q} = \frac{1}{ 1} \text{ r
 Which are not useful approximations of \gam.
  However, for $N \geq 3$, observe that $\gamma_1 = \frac{1}{2}$. Hence we can just hard-code this initial value. This does mean treating \textbf{trivial values of N} ($N = 1,2$) as a special case.
 
-\emph{The reader may note at this point that it is often considered bad practice to hard-code values like this, as it sometimes effects flexiblilty. However, I argue that in this instance, we are hard-coding the value of a base case in our sequence of \gami $ $ values, and that it's performance improvement, combined with the legibility of the code makes it an acceptable approach.}
+\emph{The reader may note at this point that it is often considered bad practice to hard-code values like this, as it sometimes effects flexiblilty. However, I argue that in this instance, we are hard-coding the value of a base case in our sequence of \gami $ $ values, and that its performance improvement, combined with the legibility of the code makes it an acceptable approach.}
 
 Finally, there is another optimization we can perform.  This is the constraining of $q$ as well as $p$. The reader may recall that in our brute force implementation (Listing \ref{bruteforce_code}), we allowed the variable \texttt{q} to run from 1 to \texttt{N}, but it's clear that $q = N$ (for non trivial values of $N$) will never contribute to the best approximation, suggesting we should be able to define an upper bound on $q$ which is less than $N$.
 
-Indeed, by returning to Equation \ref{em_constraint}. If we look at the left hand side of this constraint;
+Indeed, by looking at the left hand side of Equation \ref{em_constraint}
 
 $$q_{i+1} (\gamma - \delta_i) < p_{i+1} ,$$
 
-and recall our original constraint for each $p_j$ and $q_j$,
+and recalling our original constraint for each $p_j$ and $q_j$,
 $$ p_j + q_j \leq N .$$
 
 Combining these equations yields
@@ -118,7 +120,7 @@ Combining these equations yields
 $$ q_{i+1} (\gamma - \delta_i) < p_{i+1} \leq N - q_{i+1}$$ 
 $$ \implies  q_{i+1} (\gamma - \delta_i) \leq N - q_{i+1} $$ 
 $$ \implies q_{i+1} (\gamma - \delta_i + 1) \leq N  $$ 
-$$ \implies q_{i+1}  \leq \frac{N}{(\gamma - \delta_i + 1)}  $$ 
+$$ \implies q_{i+1}  \leq \frac{N}{(\gamma - \delta_i + 1)}  .$$ 
 
 So everytime we find a new approximation for \gam, we can also update the maximal possible value of $q$ (\texttt{qMax} in Listing \ref{appem_code}). In practice this provides less of an optimization than the constraining of $p$, but for large $N$ this does have a noticeable effect.
 
@@ -134,7 +136,7 @@ The performance improvement in our optimization has proven to be more than accep
 Figure \ref{fig:emnaive_vs_better} shows   the time taken for both algorithms to complete for the input $N$ from 1 to 250. It appears to support our claim, but to further confirm the validity of our analysis, Figure \ref{loglog} shows the logs of the values in Figure \ref{fig:emnaive_vs_better} on logarithmic axes. The gradients of the lines approximating the brute force curve and optimized curve are \textbf{1.9} and \textbf{0.9}, respectively. This is almost exactly what we'd expect from taking the logs of quadratic and linear plots.
 
 \begin{figure}[!hb]
-
+\centering
    \includegraphics[scale=0.5]{bruteforce_vs_better.eps}
 
    \caption{A performance comparison between the brute force algorithm and the optimized version.}
@@ -142,7 +144,7 @@ Figure \ref{fig:emnaive_vs_better} shows   the time taken for both algorithms to
 \end{figure}
 
 \begin{figure}[!htb]
-
+\centering
    \includegraphics[scale=0.5]{bruteforce_vs_better_logs.eps}
 
    \caption{A graph of the logs of the curves in figure \ref{fig:emnaive_vs_better}, plotted on logarithmic axes. The axis scales are omitted since the important feature here is the gradient of the lines.}
@@ -170,7 +172,7 @@ Elapsed time is 18.8509 seconds.
 \section{Lucky numbers}
 
 \subsection{Context}
-Lucky numbers, (more commonly referred to as Carmichael numbers \cite{carmichael}) are integers $n$ that satisfy the following criterion.
+Lucky numbers, (more commonly referred to as Carmichael numbers \cite{carmichael}) are integers $n$ that satisfy the following criteria.
 
 \begin{enumerate}
 \item The integer $n$ is not prime.
@@ -241,7 +243,7 @@ The implementation of this alternative approach is listed in Appendix \ref{isluc
 
 
 \begin{figure}[h]
-
+\centering
    \includegraphics[scale=0.5]{islucky_test.eps}
 
    \caption{A performance comparison between \texttt{isLucky} and \texttt{isLuckyAlternative}.}
