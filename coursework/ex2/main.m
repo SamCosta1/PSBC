@@ -11,11 +11,11 @@ burrowPos = [600, 600];
 warehouseNW = [200, 0];
 warehouseSW = [200 -400];
 
-# the rates of diminishing speeds
+# The rates of diminishing speeds
 foxSpeedRate = 2e-4;
 rabbitSpeedRate = 7e-4;
 
-options = odeset('Events',@(t,z)stopEvent(t,z, burrowPos), 'MaxStep', 0.1, 'RelTol', 1e-6);
+options = odeset('Events', @(t,z)stopEvent(t,z, burrowPos), 'MaxStep', 0.1);
 
 [tsimple, zsimple] = ode45(@(t, z)modelODE(t, z, burrowPos, rabbitSpeed, foxSpeed, warehouseNW, warehouseSW), ...
                 [0 300], [rabbitPos foxPos], options);
