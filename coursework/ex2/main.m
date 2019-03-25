@@ -4,9 +4,9 @@ rabbitSpeed = 13;
 foxSpeed = 16;
 
 # Coordinates in meters
-rabbitPos = [0, -400];
-foxPos = [250, 150];
-burrowPos = [600, -1e3];
+rabbitPos = [0, 0];
+foxPos = [250, -550];
+burrowPos = [600, 600];
 
 warehouseNW = [200, 0];
 warehouseSW = [200 -400];
@@ -35,5 +35,5 @@ printSol(t1Event, i1Event);
                 [0 300], [rabbitPos foxPos 0 0], options);
     
 printSol(t2Event, i2Event);
-##plotScene(burrowPos, warehouseNW, warehouseSW, zcomplex, 1);
-##plotScene(burrowPos, warehouseNW, warehouseSW, zsimple, 2);
+plotScene(burrowPos, warehouseNW, warehouseSW, zcomplex, 1);
+plotScene(burrowPos, warehouseNW, warehouseSW, zsimple, 2);
