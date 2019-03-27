@@ -3,6 +3,8 @@ Now that we've seen in part \ref{lbl:foxtarget} that the fox always runs towards
 Therefore, we can say that a creature $C$ runs towards a target $T$ with a speed of $u$. We seek it's velocity in the $x$ direction ($v_x$) and in the $y$ direction ($v_y$).
 
 \begin{figure}[h]
+\label{fig:chasing}
+\caption{The scenario when a creature C runs towards a target T}
 \centering
 \begin{tikzpicture}
  
@@ -11,7 +13,14 @@ Therefore, we can say that a creature $C$ runs towards a target $T$ with a speed
 \coordinate (B) at (3,2);
 \draw[dashed] (O)--(A);
 \draw[dashed] (A)--(B);
-\draw[->] (O)--(B);
+\draw[-{Latex[width=2mm]}] (O)--(B);
+
+\filldraw (-1,0) circle[radius=1.5pt];
+\node[above left=0pt of {(-1,0)}, outer sep=1pt,fill=white] {C};
+
+\filldraw (3,2) circle[radius=1.5pt];
+\node[above right=0pt of {(3,2)}, outer sep=1pt,fill=white] {T};
+
 
 \tkzLabelSegment[below=1pt](O,A){$\Delta_x$}
 \tkzLabelSegment[above=2pt](O,B){$\Delta$}
@@ -25,3 +34,22 @@ Therefore, we can say that a creature $C$ runs towards a target $T$ with a speed
 
 \end{tikzpicture}
 \end{figure}
+
+Figure \ref{fig:chasing} shows the scene. Using this we denote the angle between the creature and the target by $\theta$ and the distance between them by $\Delta$. We can then easily deduce that
+
+$$ v_x = s\cos{\theta}, $$
+$$ v_y = s\sin{\theta}. $$
+
+Furthermore, we see there's no need to compute $\theta$, we can observe that 
+
+$$ \cos{\theta} = \frac{\Delta_x}{\Delta}$$
+$$ \sin{\theta} = \frac{\Delta_y}{\Delta}.$$
+
+We can then combine these equations giving our final equations
+
+$$ v_x = s \frac{\Delta_x}{\Delta},$$
+$$ v_y = s \frac{\Delta_y}{\Delta}.$$
+
+The advantage of using these equations rather than computing $\theta$ using trigonometry is that we can implement both components in one line using Octave's vector based arithmetic. This can be seen in our implementation in Listing \ref{}.
+
+ \lstinputlisting[label={lst:computeVelocity}, caption={A function to compute the velocity of an entity facing a target with a given speed.}] {../computeVelocity.m}
