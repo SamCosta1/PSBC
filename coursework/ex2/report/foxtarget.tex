@@ -1,0 +1,43 @@
+The most challenging aspect of modeling this scene is to determine the direction in which the fox should run at any instant, following \ref{lbl:movementRules}. We will solve this problem by splitting our scene up into three overlapping regions $A$, $B$ and $C$ defined as follows (and visualized in \ref{fig:zones}). 
+
+$$ A = \{ (x,y) \in \mathbb{R}^2  \mid  y > NW_y \},  $$
+$$ B = \{ (x,y) \in \mathbb{R}^2  \mid  x < NW_x \},  $$
+$$ C = \{ (x,y) \in \mathbb{R}^2  \mid  y < SW_y \}.  $$
+
+\input{zonesfigure}
+
+The rules dictate that the fox always runs towards something, either the rabbit or one of the corners. We refer to this as the fox's target.
+
+Cleary, if both the fox and rabbit are in the same zone, then the fox's target is the rabbit since there must be a line of sight between them. 
+
+Now suppose this is not the case and the fox and the rabbit are in different zones. Let $L$ denote the line connecting the fox and the rabbit, and it's equation be $y = mx  + c$. We check if this line intersects the south wall of the warehouse or the west wall of the warehouse. Note, since the warehouse in convex, there is no need to check intersection with the north wall. Since if there is an intersection with the north wall, then there must be an intersection with one of the other two.
+
+Before continuing, a note on why we first excluded the case where both creatures are in the same zone. The reason is that $L$ could intersect one or both of the walls, but the fox still has a line of sight. This happens only when they are in the same zone. Excluding this case first makes for easier calculations since we can then assume that an intersection means there is no line of sight.
+
+Let $\Delta_x$, $\Delta_y$ denote the horizontal and vertical distances respectively between the fox, and the target. The gradient $m$ therefore is $\frac{\Delta_y}{\Delta_x}$. In the equation above $c$ is referred to as the intercept (the $y$ coordinate when $x = 0$). This is calculated $c = F_y - m \times F_x$. \\
+
+\noindent \textbf{West wall}
+
+To check if $L$ intersects the west wall, we must calculate the $y$ coordinate of $L$ at $x = SW_x$. If this value lies between $SW_y$ and $NW_y$ then we have an intersection. Mathematically, we check if the following holds.
+
+$$ SW_Y < m \times SW_x + c < NW_y.$$\\
+
+\noindent \textbf{South wall}
+
+Intersection with the south wall happens if the $x$ coordinate where $L$ intersects the line $y = SW_y$ is strictly greater than $SW_x$. By rearranging the equation of $L$, we see that we have intersection when the following holds.
+
+$$ \frac{SW_y - c}{m} > SW_x. $$
+
+We can conclude that if either case holds then the fox doesn't have a line of sight to the rabbit and hence the rabbit cannot be the fox's target. Leaving the northwest corner and southwest corner of the warehouse the only two possibilities.
+
+If the fox is in zone $A$, then the target is $NW$ clearly, since the closest corner to the fox is $NW$. Similarly, if the fox is in zone $C$ then the target must be $SW$. 
+
+The final case is when the fox is in zone $B$ but \emph{not} in zones $A$ or $C$. In this case, the fox's target depends on the location of the rabbit. If the rabbit is in zone $A$ then the target is $NW$, otherwise, the target is $SW$. A simple way to check this is to consider whether the gradient $m$ is positive or negative. If it's positive then the rabbit must be in zone $A$ and if negative it must be in zone $C$.
+
+This also accounts for the rule that states that the fox follows the perimeter if it is at one of the corners but can't see the rabbit. Let's look at the case where the fox is at $NW$ and can't see the rabbit, then it must be the case that the rabbit is southeast of the warehouse, making the gradient negative, meaning the fox target will be $SW$.
+
+Conversely, if the fox is at $SW$ and can't see the rabbit, then it is north of $SW$ and $m$ must be positive since the rabbit must be northeast of the warehouse.
+
+The implementation of this function is listed in Listing \ref{lst:computeFoxTarget}. The first two lines of this function demand some explanation. They define variables \texttt{X} and \texttt{Y} to use when indexing the vectors. The reasoning is as follows. Given a vector \texttt{a = [xComponent, yComponent]}, it is far more readable to write code using \texttt{a(X)} and \texttt{a(Y)}, than \texttt{a(1)} and \texttt{a(2)}.
+
+ \lstinputlisting[label={lst:computeFoxTarget}, caption={A function to compute the fox's target given the warehouse coordinates and the rabbit's position.}] {../computeFoxTarget.m}

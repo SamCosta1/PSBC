@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  27 MAR 2019 12:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  27 MAR 2019 15:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -812,7 +812,7 @@ readarray: bounds checking OFF
 \ps@tempboxa=\box44
 \boxtop@sep=\skip52
 \boxbottom@sep=\skip53
-) (./report.aux (./question2.aux))
+) (./report.aux (./stoppingevents.aux) (./question2.aux))
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -951,52 +951,70 @@ LaTeX Warning: Reference `fig:scene' on page 1 undefined on input line 7.
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./lineofsight.tex) (./foxtarget.tex) (./velocities.tex
+(./foxtarget.tex (./zonesfigure.tex) [2]
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
-LaTeX Warning: Reference `lbl:foxtarget' on page 2 undefined on input line 1.
+ []
 
-Missing character: There is no ) in font nullfont!
-Missing character: There is no ) in font nullfont!
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
-[2]
+ []
 
-LaTeX Warning: Reference `' on page 3 undefined on input line 53.
+[3] (../computeFoxTarget.m
+LaTeX Font Info:    Try loading font information for OML+pcr on input line 8.
 
-(../computeVelocity.m
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 2.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omlpcr.fd
+File: omlpcr.fd 
+)
+LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 8.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 9.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 24.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)))
-(./stoppingevents.tex) (../modelODE.m [3])) [4]
+) [4]))
+(./velocities.tex (./triangle.tex
+Missing character: There is no ) in font nullfont!
+Missing character: There is no ) in font nullfont!
+) (../computeVelocity.m [5])) [6]
+\openout2 = `stoppingevents.aux'.
+
+
+(./stoppingevents.tex) (../modelODE.m)) [7
+
+
+]
 \openout2 = `question2.aux'.
 
- (./question2.tex) [5
+ (./question2.tex) [8
 
 ]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 37.
 
-[6
+[9
 
-] (./report.aux (./question2.aux))
+] (./report.aux (./stoppingevents.aux) (./question2.aux))
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 19753 strings out of 492995
- 391429 string characters out of 6132705
- 491311 words of memory out of 5000000
- 22803 multiletter control sequences out of 15000+600000
- 13030 words of font info for 51 fonts, out of 8000000 for 9000
+ 19828 strings out of 492995
+ 392579 string characters out of 6132705
+ 535051 words of memory out of 5000000
+ 22862 multiletter control sequences out of 15000+600000
+ 13376 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,15n,67p,457b,1541s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,15n,67p,539b,1561s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/te
 xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/tex
@@ -1004,18 +1022,24 @@ live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texl
 ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive
-/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
-017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
-7/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf
--dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-
-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (6 pages, 142855 bytes).
+/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2
+017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/201
+7/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-dist
+/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/f
+onts/type1/urw/courier/ucrr8a.pfb>
+Output written on report.pdf (9 pages, 199911 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

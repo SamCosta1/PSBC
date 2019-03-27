@@ -1,0 +1,33 @@
+
+\begin{figure}[h]
+\label{fig:chasing}
+\caption{The scenario when a creature C runs towards a target T}
+\centering
+\begin{tikzpicture}
+ 
+\coordinate (O) at (-1,0);
+\coordinate (A) at (3,0);
+\coordinate (B) at (3,2);
+\draw[dashed] (O)--(A);
+\draw[dashed] (A)--(B);
+\draw[-{Latex[width=2mm]}] (O)--(B);
+
+\filldraw (-1,0) circle[radius=1.5pt];
+\node[above left=0pt of {(-1,0)}, outer sep=1pt,fill=white] {C};
+
+\filldraw (3,2) circle[radius=1.5pt];
+\node[above right=0pt of {(3,2)}, outer sep=1pt,fill=white] {T};
+
+
+\tkzLabelSegment[below=1pt](O,A){$\Delta_x$}
+\tkzLabelSegment[above=2pt](O,B){$\Delta$}
+\tkzLabelSegment[right=2pt](A,B){$\Delta_y$}
+
+\tkzMarkRightAngle[size=0.5,opacity=.4](O,A,B)% square angle here
+
+\tkzLabelAngle[pos = 0.85](B,O,A){$\theta$}
+\tkzMarkAngle[fill=gray, size=1.2cm, opacity=.4](A,O,B)
+
+
+\end{tikzpicture}
+\end{figure}

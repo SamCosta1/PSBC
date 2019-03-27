@@ -6,10 +6,11 @@ To do this, we will use differential equations, solving them numerically using O
 
 The scene we will be working with is as follows. Its main feature is a warehouse defined by its two westerly corners which we will denote as $NW$ and $SW$ for northwest and southwest respectively. The scene will contain the rabbit's burrow (denoted $B$). Figure \ref{fig:scene} shows an example configuration. We will denote the position of the rabbit by $R$ and the fox by $F$.
 
-The rabbit moves in a straightforward way, directly towards the burrow with constant speed $s_{r0}$.
+The rabbit moves in a straightforward way, directly towards the burrow with constant speed $s_{r0}$. The fox moves under the following rules.
 
-The fox moves under the following rules;
-
+\begin{equation}
+\label{lbl:movementRules}
+\begin{array}{p{0.9\textwidth}}
 \begin{itemize}
 
 \item If the rabbit is within the fox's line of sight, the fox runs directly towards the rabbit.
@@ -18,6 +19,8 @@ The fox moves under the following rules;
 
 \item If the fox reaches a corner and the rabbit still is not in sight, it follows the warehouse perimeter until it sees the rabbit.
 \end{itemize}
+  \end{array}
+\end{equation}
 
 Before continuing, we must make a few assumptions as to what our model can support. They are as follows.
 
@@ -62,11 +65,7 @@ In other words, we will calculate the velocity of the fox and rabbit in the $x$ 
 
 We will break the problem up into smaller pieces and solve these small pieces first before looking at the solution as a whole. In practice, this means examining small helper functions which will contribute to the final solution.
 
-\subsection{Determining Line of Sight}
-
-\input{lineofsight}
-
-\subsection {Determining the Fox's Target}
+\subsection {Determining the Fox's Target} \label{lbl:foxtarget}
 
 \input{foxtarget}
 
@@ -76,7 +75,7 @@ We will break the problem up into smaller pieces and solve these small pieces fi
 
 \subsection {Stopping the ODE solver}
 
-\input{stoppingevents}
+\include{stoppingevents}
 
 With this in place, we can now examine the ODE function itself, included in Listing: \ref{lst:modelode}. We can see that we compute the rabbit's velocity directly, and compute the fox's velocity based on its trajectory.
 
