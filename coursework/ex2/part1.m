@@ -12,7 +12,7 @@ burrowPos = [600, 600];
 warehouseNW = [200, 0];
 warehouseSW = [200 -400];
 
-messages = {'the fox caught the rabbit', 'the rabbit reached the burrow'};
+messages = {'the fox caught the rabbit.', 'the rabbit reached the burrow.'};
 printSol = @(time, index) printf("\nAt time %f, %s\n\n", time, messages{index});
 
 options = odeset('Events', @(t,z)stopEvent(t,z, burrowPos), 'MaxStep', 0.1);

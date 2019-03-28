@@ -31,6 +31,8 @@ Before continuing, we must make a few assumptions as to what our model can suppo
 
 \end{itemize}
 
+\input{scenefigure}
+
 \section{The General Approach}
 
 The approach we will use is to model the scene using Octave's built-in \texttt{ode45} function, which is a numerical solver for ODEs. We will take advantage of the fact that it is a numerical solver, not a symbolic one, allowing us will allow us to change the direction of the fox within the ODE function. These changes are based on the fox's line of sight, and the other factors referenced in the rules above. 
@@ -79,10 +81,10 @@ We will break the problem up into smaller pieces and solve these small pieces fi
 
 \subsection{The ODE function}
 
-With this in place, we can now examine the ODE function itself, included in Listing: \ref{lst:modelode}. We can see that we compute the rabbit's velocity directly, and compute the fox's velocity based on its trajectory.
+With this in place, we can now examine the ODE function itself, included in Listing \ref{lst:modelode}. We can see that we compute the rabbit's velocity directly, and compute the fox's velocity based on its target, which is decided upon based on the rules we have discussed.
 
  \lstinputlisting[label={lst:modelode}, caption={The ODE function used to model the fox chasing the rabbit}] {../modelODE.m}
  
- \subsection{An example}
+ \subsection{An example}\label{sec:example}
  
  \input{simpleexample}

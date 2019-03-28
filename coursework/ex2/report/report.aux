@@ -3,38 +3,55 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}The Problem}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}The Scene}{1}}
 \newlabel{lbl:movementRules}{{1}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An example configuration of the scene}}{2}}
+\newlabel{fig:scene}{{1}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}The General Approach}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}The Solution}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Determining the Fox's Target}{2}}
-\newlabel{lbl:foxtarget}{{5.1}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The scene divided into three regions}}{3}}
-\newlabel{fig:zones}{{1}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The scene divided into three regions}}{3}}
+\newlabel{fig:zones}{{2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Determining the Fox's Target}{3}}
+\newlabel{lbl:foxtarget}{{5.1}{3}}
 \newlabel{lst:computeFoxTarget}{{1}{4}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1}A function to compute the fox's target given the warehouse coordinates and the rabbit's position.}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Velocities in the $x$ and $y$ directions}{5}}
 \newlabel{fig:chasing}{{5.2}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The scenario when a creature C runs towards a target T}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The scenario when a creature C runs towards a target T.}}{5}}
 \newlabel{lst:computeVelocity}{{2}{6}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {2}A function to compute the velocity of an entity facing a target with a given speed.}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Stopping the ODE solver}{6}}
 \newlabel{lst:stopEvent}{{3}{6}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3}The event function used to stop the ODE solver.}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}The ODE function}{6}}
-\newlabel{lst:modelode}{{4}{6}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}The ODE function used to model the fox chasing the rabbit}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}The ODE function}{7}}
+\newlabel{lst:modelode}{{4}{7}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}The ODE function used to model the fox chasing the rabbit}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}An example}{7}}
+\newlabel{sec:example}{{5.5}{7}}
 \newlabel{lst:part1}{{5}{7}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {5}The code to run the model with a set of parameters.}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The output from running the simple model.}}{8}}
-\newlabel{output:simple}{{3}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The paths of the fox and rabbit under this configuration.}}{8}}
-\newlabel{fig:simplegraph}{{4}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}A more realistic scenario}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Distance}{8}}
-\newlabel{ap:distance}{{A}{8}}
-\newlabel{lst:distance}{{6}{8}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}A function to compute the distance between two points.}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}The \texttt  {plotScene} function}{9}}
-\newlabel{ap:plotScene}{{B}{9}}
-\newlabel{lst:plotScene}{{7}{9}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}A function to plot the results of the ODE solver and the rest of the scene.}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The output from running the simple model.}}{8}}
+\newlabel{output:simple}{{4}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The paths of the fox and rabbit under this configuration.}}{8}}
+\newlabel{fig:simplegraph}{{5}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}A more realistic scenario}{9}}
+\newlabel{eq:speeds}{{4}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Computing the distance travelled}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The new ODE function}{9}}
+\newlabel{lst:realisticModelODE}{{6}{9}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}The ODE function taking into account diminishing speeds.}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}An example}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The output from running the more realistic model.}}{10}}
+\newlabel{output:complex}{{6}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Distance}{10}}
+\newlabel{ap:distance}{{A}{10}}
+\newlabel{lst:distance}{{7}{10}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}A function to compute the distance between two points.}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}The \texttt  {plotScene} function}{10}}
+\newlabel{ap:plotScene}{{B}{10}}
+\newlabel{lst:plotScene}{{8}{11}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}A function to plot the results of the ODE solver and the rest of the scene.}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Running the more realistic model}{11}}
+\newlabel{ap:part2}{{C}{11}}
+\newlabel{lst:part2}{{9}{11}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}The code used to run the more realistic model of the scene.}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The paths of the fox and rabbit in the more realistic example.}}{11}}
+\newlabel{fig:realisticModel}{{7}{11}}
