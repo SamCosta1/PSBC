@@ -27,12 +27,20 @@ This report details the approach and implementation relating to the second cours
 \section{The Problem}
 
 \input{content}
-\include{question2}
+
+\section{A more realistic scenario}
+\input{question2}
 
 \begin{appendices}
 
+\section{Distance}\label{ap:distance}
+ \lstinputlisting[label={lst:distance}, caption={A function to compute the distance between two points.}] {../distance.m}
 
+
+\section{The \texttt{plotScene} function}\label{ap:plotScene}
+ \lstinputlisting[label={lst:plotScene}, caption={A function to plot the results of the ODE solver and the rest of the scene.}] {../plotScene.m}
 \end{appendices}
+
 
 \begin{thebibliography}{9}
 \end{thebibliography}

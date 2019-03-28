@@ -11,7 +11,7 @@ Figure \ref{fig:chasing} shows the scene. Using this we denote the angle between
 $$ v_x = s\cos{\theta}, $$
 $$ v_y = s\sin{\theta}. $$
 
-Furthermore, we see there's no need to compute $\theta$, we can observe that 
+Furthermore, we see there's no need to compute $\theta$. We can observe that 
 
 $$ \cos{\theta} = \frac{\Delta_x}{\Delta}$$
 $$ \sin{\theta} = \frac{\Delta_y}{\Delta}.$$
@@ -21,6 +21,8 @@ We can then combine these equations giving our final equations
 $$ v_x = s \frac{\Delta_x}{\Delta},$$
 $$ v_y = s \frac{\Delta_y}{\Delta}.$$
 
-The advantage of using these equations rather than computing $\theta$ using trigonometry is that we can implement both components in one line using Octave's vector based arithmetic. This can be seen in our implementation in Listing \ref{lst:computeVelocity}.
+The advantage of using these equations rather than computing $\theta$ using trigonometry is that we can implement both components in one line using Octave's vector based arithmetic. We can see this in our implementation in Listing \ref{lst:computeVelocity}.
+
+Note, this function calls a function called \texttt{distance}. which simply computes the distance between two points. It is listed as Listing \ref{lst:distance} in Apprendix \ref{ap:distance}.
 
  \lstinputlisting[label={lst:computeVelocity}, caption={A function to compute the velocity of an entity facing a target with a given speed.}] {../computeVelocity.m}

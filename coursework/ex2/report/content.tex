@@ -75,13 +75,14 @@ We will break the problem up into smaller pieces and solve these small pieces fi
 
 \subsection {Stopping the ODE solver}
 
-\include{stoppingevents}
+\input{stoppingevents}
+
+\subsection{The ODE function}
 
 With this in place, we can now examine the ODE function itself, included in Listing: \ref{lst:modelode}. We can see that we compute the rabbit's velocity directly, and compute the fox's velocity based on its trajectory.
 
  \lstinputlisting[label={lst:modelode}, caption={The ODE function used to model the fox chasing the rabbit}] {../modelODE.m}
-
-
-
-
-
+ 
+ \subsection{An example}
+ 
+ \input{simpleexample}
