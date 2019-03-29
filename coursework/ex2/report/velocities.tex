@@ -1,6 +1,4 @@
-We've seen in part \ref{lbl:foxtarget} that the fox always runs towards some target. Furthermore, the rabbit perpetually runs towards its burrow. 
-
-Therefore, we can say that a creature $C$ runs towards a target $T$ with a speed of $u$. We seek it's velocity in the $x$ direction ($v_x$) and in the $y$ direction ($v_y$).
+We've seen in part \ref{lbl:foxtarget} that the fox always runs towards some target with constant speed. Furthermore, the rabbit perpetually runs towards its burrow, also with constant speed. Therefore, we can say that a creature $C$ runs towards a target $T$ with a constant speed of $u$. We seek it's velocity in the $x$ direction ($v_x$) and in the $y$ direction ($v_y$).
 
 
 \input{triangle}
@@ -8,8 +6,8 @@ Therefore, we can say that a creature $C$ runs towards a target $T$ with a speed
 
 Figure \ref{fig:chasing} shows the scene. Using this we denote the angle between the creature and the target by $\theta$ and the distance between them by $\Delta$. We can then easily deduce that
 
-$$ v_x = s\cos{\theta}, $$
-$$ v_y = s\sin{\theta}. $$
+$$ v_x = u\cos{\theta}, $$
+$$ v_y = u\sin{\theta}. $$
 
 Furthermore, we see there's no need to compute $\theta$. We can observe that 
 
@@ -18,11 +16,11 @@ $$ \sin{\theta} = \frac{\Delta_y}{\Delta}.$$
 
 We can then combine these equations giving our final equations
 
-$$ v_x = s \frac{\Delta_x}{\Delta},$$
-$$ v_y = s \frac{\Delta_y}{\Delta}.$$
+$$ v_x = u \frac{\Delta_x}{\Delta},$$
+$$ v_y = u \frac{\Delta_y}{\Delta}.$$
 
 The advantage of using these equations rather than computing $\theta$ using trigonometry is that we can implement both components in one line using Octave's vector based arithmetic. We can see this in our implementation in Listing \ref{lst:computeVelocity}.
 
-Note, this function calls a function called \texttt{distance}. which simply computes the distance between two points. It is listed as Listing \ref{lst:distance} in Apprendix \ref{ap:distance}.
+Note, this function calls a function called \texttt{distance}, which simply computes the distance between two points. It is listed as Listing \ref{lst:distance} in Apprendix \ref{ap:distance}.
 
  \lstinputlisting[label={lst:computeVelocity}, caption={A function to compute the velocity of an entity facing a target with a given speed.}] {../computeVelocity.m}

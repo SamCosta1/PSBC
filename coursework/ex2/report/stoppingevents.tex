@@ -1,6 +1,6 @@
-We can use an event function to stop the computation when our one of our end conditions is met. Two events should stop the calculation, the fox catching the rabbit, and the rabbit reaching the burrow.
+We can use an event function to stop the computation when our one of our end conditions is satisfied. Two events should stop the calculation, the fox catching the rabbit, and the rabbit reaching the burrow.
 
-We will use a similar approach for both. The rabbit is considered caught if it is within 0.1 meters of its burrow. Similarly, it is deemed to be in its burrow if it is within 0.1 meters of it.
+We will use a similar approach for both. The rabbit is considered caught if it is within 0.1 meters of the fox. Similarly, it is deemed to be in its burrow if it is within 0.1 meters of it. \emph{Note} that this could present an issue in situations where the fox is very close to the rabbit at the same time as the rabbit is very close to the burrow. It could be ambiguous whether the rabbit is safe or not. In these cases, it may be appropriate to choose a smaller value than 0.1 to ensure the correct result is output.
 
 Let the distance between the fox and the rabbit be $\Delta_{f,r}$. Our event function should trigger the ODE solver to stop when $\Delta_{f,r}$ becomes less than 0.1. In other words when $\Delta_{f,r} - 0.1$ becomes negative. The case when the rabbit reaches the burrow is similar. The implementation is listed in Listing \ref{lst:stopEvent}.
 

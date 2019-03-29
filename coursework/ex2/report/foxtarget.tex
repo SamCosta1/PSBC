@@ -1,4 +1,4 @@
-The most challenging aspect of modeling this scene is to determine the direction in which the fox should run at any instant, following (\ref{lbl:movementRules}). We will solve this problem by splitting our scene up into three overlapping regions $A$, $B$ and $C$ defined as follows (and visualized in Figure\ref{fig:zones}). 
+The most challenging aspect of modelling this scene is to determine the direction in which the fox should run at any instant, following \ref{sec:rules}. We will solve this problem by splitting our scene up into three overlapping regions $A$, $B$ and $C$ defined as follows (and visualised in Figure \ref{fig:zones}). 
 
 $$ A = \{ (x,y) \in \mathbb{R}^2  \mid  y > NW_y \},  $$
 $$ B = \{ (x,y) \in \mathbb{R}^2  \mid  x < NW_x \},  $$
@@ -8,13 +8,11 @@ $$ C = \{ (x,y) \in \mathbb{R}^2  \mid  y < SW_y \}.  $$
 
 The rules dictate that the fox always runs towards something, either the rabbit or one of the corners. We refer to this as the fox's target.
 
-Cleary, if both the fox and rabbit are in the same zone, then the fox's target is the rabbit since there must be a line of sight between them. 
+If both the fox and rabbit are in the same zone, then the fox's target is the rabbit since there must be a line of sight between them. Now suppose this is not the case and the fox and the rabbit are in different zones. Let $L$ denote the line connecting the fox and the rabbit, with equation $y = mx  + c$. Notice that since the two are in different zones, then if $L$ intersects one of the warehouse walls, then there is no line of sight.
 
-Now suppose this is not the case and the fox and the rabbit are in different zones. Let $L$ denote the line connecting the fox and the rabbit, with equation $y = mx  + c$. We check if this line intersects the south wall of the warehouse or the west wall of the warehouse. Note, since the warehouse in convex, there is no need to check intersection with the north wall. Since if there is an intersection with the north wall, then there must be an intersection with one of the other two.
+We can save on one intersection check by observing that the warehouse in convex and therefore if $L$ intersects the north wall, then there must be an intersection with one of the other two. Hence we need only check if $L$ intersects the south or west wall of the warehouse (it would be equally valid only to check the north and west walls).
 
-Before continuing, a note on why we first excluded the case where both creatures are in the same zone. The reason is that $L$ could intersect one or both of the walls, but the fox still has a line of sight. This happens only when they are in the same zone. Excluding this case first makes for easier calculations since we can then assume that an intersection means there is no line of sight.
-
-Let $\Delta_x$, $\Delta_y$ denote the horizontal and vertical distances respectively between the fox, and the rabbit. The gradient $m$ therefore is $\frac{\Delta_y}{\Delta_x}$. In the equation above $c$ is referred to as the intercept (the $y$ coordinate when $x = 0$). This is calculated $c = F_y - m \times F_x$. \\
+Let $\Delta_x$, $\Delta_y$ denote the horizontal and vertical distances respectively between the fox, and the rabbit. The gradient $m$ of $L$ therefore is $\frac{\Delta_y}{\Delta_x}$. In the equation above $c$ is referred to as the intercept (the $y$ coordinate when $x = 0$). This is calculated $c = F_y - m \times F_x$. \\
 
 \noindent \textbf{West wall}
 
@@ -30,13 +28,13 @@ $$ \frac{SW_y - c}{m} > SW_x. $$
 
 We can conclude that if either case holds then the fox does not have a line of sight to the rabbit and hence the rabbit cannot be the fox's target. Therefore, the northwest corner and southwest corner of the warehouse the only two possibilities.
 
-If the fox is in zone $A$, then the target is $NW$ clearly, since the closest corner to the fox is $NW$. Similarly, if the fox is in zone $C$ then the target must be $SW$. 
+So suppose the fox cannot see the rabbit. If the fox is in zone $A$, then the target is $NW$ clearly, since the closest corner to the fox is $NW$. Similarly, if the fox is in zone $C$ then the target must be $SW$. 
 
-The final case is when the fox is in zone $B$ but \emph{not} in zones $A$ or $C$. In this case, the fox's target depends on the location of the rabbit. If the rabbit is in zone $A$ then the target is $NW$. Otherwise, the target is $SW$. A simple way to check this is to consider whether the gradient $m$ is positive or negative. If it is positive, then the rabbit must be in zone $A$, and if negative it must be in zone $C$.
+The final case is when the fox is in zone $B$ but \emph{not} in zones $A$ or $C$. In this case, the fox's target depends on the location of the rabbit. If the rabbit is in zone $A$ then the target is $NW$. Otherwise, the target is $SW$. A simple way to check this is to consider whether the gradient $m$ is positive or negative. If it is positive, then the rabbit must be in zone $A$, and if negative it must be in zone $C$. 
 
 These cases also account for the rule that states that the fox follows the perimeter if it is at one of the corners but cannot see the rabbit. Let us look at the case where the fox is at $NW$ and cannot see the rabbit. Then it must be the case that the rabbit is southeast of the warehouse, making the gradient negative, meaning the fox target will be $SW$.
 
-Conversely, if the fox is at $SW$ and cannot see the rabbit, then it is north of $SW$, and the gradient must be positive since the rabbit must be northeast of the warehouse.
+Conversely, if the fox is at $SW$ and cannot see the rabbit, then the rabbit is northeast of $SW$. Therefore the gradient must be positive, making the target $NW$ as required. 
 
 The implementation of this function is listed in Listing \ref{lst:computeFoxTarget}. The first two lines of this function demand some explanation. They define variables \texttt{X} and \texttt{Y} to use when indexing the vectors. The reasoning is as follows. Given a vector \texttt{a = [xComponent, yComponent]}, it is far more readable to write code using \texttt{a(X)} and \texttt{a(Y)}, than \texttt{a(1)} and \texttt{a(2)}.
 

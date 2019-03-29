@@ -1,16 +1,15 @@
-The goal of this project is to investigate the dynamics between a fox and a rabbit in a specific scene. The goal of the rabbit in the scene is to reach it is a burrow safely. Meanwhile, the goal of the fox is to catch the rabbit. We will aim to answer the question of which outcome occurs based on a set of input parameters.
+The goal of this project is to investigate the dynamics between a fox and a rabbit in a specific scene. The goal of the rabbit is to reach it is a burrow safely. Meanwhile, the goal of the fox is to catch the rabbit. We will aim to answer the question of which outcome occurs based on a set of input parameters.
 
 To do this, we will use differential equations, solving them numerically using Octave's \texttt{ode45} solver.
 
 \section{The Scene}
 
-The scene we will be working with is as follows. Its main feature is a warehouse defined by its two westerly corners which we will denote as $NW$ and $SW$ for northwest and southwest respectively. The scene will contain the rabbit's burrow (denoted $B$). Figure \ref{fig:scene} shows an example configuration. We will denote the position of the rabbit by $R$ and the fox by $F$.
+The scene we will be working with is as follows. Its main feature is a warehouse defined by its two westernmost corners and stretching out infinitely to the east. The two westernmost corners will be denoted as $NW$ and $SW$ for northwest and southwest respectively. Of course, neither creature can see through, or run through the warehouse. The scene will contain the rabbit's burrow (denoted $B$). We will denote the position of the rabbit by $R$ and the fox by $F$. Figure \ref{fig:scene} shows an example configuration. 
 
-The rabbit moves in a straightforward way, directly towards the burrow with constant speed $s_{r0}$. The fox moves under the following rules.
+\subsubsection{Rules} \label{sec:rules}
 
-\begin{equation}
-\label{lbl:movementRules}
-\begin{array}{p{0.9\textwidth}}
+The rabbit moves in a straightforward way, directly towards the burrow with constant speed $s_{r0}$. The fox moves with a constant speed of $s_{f0}$, but its direction depends on the following rules;
+
 \begin{itemize}
 
 \item If the rabbit is within the fox's line of sight, the fox runs directly towards the rabbit.
@@ -19,8 +18,7 @@ The rabbit moves in a straightforward way, directly towards the burrow with cons
 
 \item If the fox reaches a corner and the rabbit still is not in sight, it follows the warehouse perimeter until it sees the rabbit.
 \end{itemize}
-  \end{array}
-\end{equation}
+
 
 Before continuing, we must make a few assumptions as to what our model can support. They are as follows.
 
@@ -35,15 +33,15 @@ Before continuing, we must make a few assumptions as to what our model can suppo
 
 \section{The General Approach}
 
-The approach we will use is to model the scene using Octave's built-in \texttt{ode45} function, which is a numerical solver for ODEs. We will take advantage of the fact that it is a numerical solver, not a symbolic one, allowing us will allow us to change the direction of the fox within the ODE function. These changes are based on the fox's line of sight, and the other factors referenced in the rules above. 
+The approach we will use is to model the scene using Octave's built-in \texttt{ode45} function, which is a numerical solver for ODEs. We will take advantage of the fact that it is a numerical solver, not a symbolic one. This fact will allow us to change the direction of the fox within the ODE function based on the relative positions of the fox, rabbit and warehouse at every timestep. 
 
-We can do this because of the iterative nature of the solver, meaning that changing the target will not affect the values computed for previous timeframes.
+We can do this because of the iterative nature of the solver, meaning that changing the direction in one timestep will not affect the values computed for previous timesteps.
 
 \section {The Solution}
 
 The first two inputs to our function defining the ODE are time $t$, and the vector $z$ holding the solution at $t$, this is defined by
 
-\begin{align}
+\begin{align}\nonumber
     z &= \begin{bmatrix}
            R_x \\
            R_y \\
@@ -54,7 +52,7 @@ The first two inputs to our function defining the ODE are time $t$, and the vect
 
 Within our ODE function, we must calculate the derivative of the elements of $z$ with respect to time. 
 
-\begin{align}
+\begin{align}\nonumber
     \dot{z} &= \begin{bmatrix}
             \dot{R_x} \\
             \dot{R_y} \\
@@ -81,10 +79,11 @@ We will break the problem up into smaller pieces and solve these small pieces fi
 
 \subsection{The ODE function}
 
-With this in place, we can now examine the ODE function itself, included in Listing \ref{lst:modelode}. We can see that we compute the rabbit's velocity directly, and compute the fox's velocity based on its target, which is decided upon based on the rules we have discussed.
+With this in place, we can now examine the ODE function itself, included in Listing \ref{lst:modelode}. We can see that we compute the rabbit's velocity directly, and compute the fox's velocity based on its trajectory.
 
  \lstinputlisting[label={lst:modelode}, caption={The ODE function used to model the fox chasing the rabbit}] {../modelODE.m}
- 
- \subsection{An example}\label{sec:example}
- 
- \input{simpleexample}
+
+\subsection{An example}
+
+\input{simpleexample}\label{sec:example}
+

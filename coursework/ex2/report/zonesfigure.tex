@@ -1,5 +1,5 @@
 \begin{figure}
-\caption{The scene divided into three regions}
+\caption{The scene divided into three regions.}
 \centering
 \label{fig:zones}
 \begin{tikzpicture}  
@@ -18,7 +18,13 @@
 \node[draw, fill=white] at (1,3.5) {B};
 \node[draw, fill=white] at (4,2) {C};
 
-\node[text=white, draw=gray] at (4.5,3.5) {Warehouse};
+\node[ text=white] at (3.4,3.76) {NW};
+\node[ text=white] at (3.36,3.2) {SW};
+
+\node[text=white, draw=gray] at (6,3.5) {Warehouse};
+
+\filldraw[fill=white] (3,3) circle[radius=1.8pt];
+\filldraw[ fill=white] (3, 4) circle[radius=1.8pt];
 
 \end{tikzpicture}
 \end{figure}

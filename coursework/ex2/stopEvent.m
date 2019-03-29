@@ -1,2 +1,2 @@
-function [value,isterminal,direction] = stopEvent(t, z, burrowPos)    % z = [Rx, Ry, Fx, Fy]  % Fox catches the rabbit  value(1) = distance(z(1:2), z(3:4)) - 0.1;  isterminal(1) = 1;  direction(1) = -1;    % Rabbit reaches it's burrow  value(2) = distance(z(1:2), burrowPos') - 0.1;  isterminal(2) = 1;  direction(2) = -1;
+function [value,isterminal,direction] = stopEvent(t, z, burrowPos)  tolerance = 0.1;  % z = [Rx, Ry, Fx, Fy]  % Fox catches the rabbit  value(1) = distance(z(1:2), z(3:4)) - tolerance;  isterminal(1) = 1;  direction(1) = -1;    % Rabbit reaches it's burrow  value(2) = distance(z(1:2), burrowPos') - tolerance;  isterminal(2) = 1;  direction(2) = -1;
 end
