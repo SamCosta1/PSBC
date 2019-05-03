@@ -1,0 +1,1 @@
+data = readSalesFigures();inds = find(data.MaxTemp > 10);plot(inds, data.Bread(inds), 'rd');hold on;others = setdiff([1:length(data.MaxTemp)], inds);plot(others, data.Bread(others), 'gs');

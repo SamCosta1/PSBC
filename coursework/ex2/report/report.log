@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  29 MAR 2019 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  1 APR 2019 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -996,17 +996,12 @@ Package epstopdf Info: Source file: <simpleModel.eps>
 (epstopdf)                    date: 2019-03-29 15:47:30
 (epstopdf)                    size: 31935 bytes
 (epstopdf)             Output file: <simpleModel-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-03-29 14:20:47
-(epstopdf)                    size: 16547 bytes
+(epstopdf)                    date: 2019-03-29 15:47:35
+(epstopdf)                    size: 16545 bytes
 (epstopdf)             Command: <repstopdf --outfile=simpleModel-eps-converted-
 to.pdf simpleModel.eps>
 (epstopdf)             \includegraphics on input line 37.
-runsystem(repstopdf --outfile=simpleModel-eps-converted-to.pdf simpleModel.eps)
-...executed safely (allowed).
-
-Package epstopdf Info: Result file: <simpleModel-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-03-29 15:47:35
-(epstopdf)                    size: 16545 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <simpleModel-eps-converted-to.pdf, id=49, 578.16pt x 433.62pt>
 File: simpleModel-eps-converted-to.pdf Graphic file (type pdf)
@@ -1022,10 +1017,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 )) (./question2.tex [8] [9 <./simpleModel-eps-converted-to.pdf>]
 (../realisticModelODE.m) [10]
 Package epstopdf Info: Source file: <realisticModel.eps>
-(epstopdf)                    date: 2019-03-29 15:47:24
-(epstopdf)                    size: 40610 bytes
+(epstopdf)                    date: 2019-03-30 16:48:14
+(epstopdf)                    size: 27323 bytes
 (epstopdf)             Output file: <realisticModel-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-03-29 14:47:00
+(epstopdf)                    date: 2019-03-29 15:47:35
 (epstopdf)                    size: 19934 bytes
 (epstopdf)             Command: <repstopdf --outfile=realisticModel-eps-convert
 ed-to.pdf realisticModel.eps>
@@ -1034,8 +1029,8 @@ runsystem(repstopdf --outfile=realisticModel-eps-converted-to.pdf realisticMode
 l.eps)...executed safely (allowed).
 
 Package epstopdf Info: Result file: <realisticModel-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-03-29 15:47:35
-(epstopdf)                    size: 19934 bytes.
+(epstopdf)                    date: 2019-04-01 14:55:59
+(epstopdf)                    size: 13844 bytes.
 
 <realisticModel-eps-converted-to.pdf, id=66, 578.16pt x 433.62pt>
 File: realisticModel-eps-converted-to.pdf Graphic file (type pdf)
@@ -1053,7 +1048,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
 Here is how much of TeX's memory you used:
  19970 strings out of 492995
  394718 string characters out of 6132705
- 532800 words of memory out of 5000000
+ 533800 words of memory out of 5000000
  22975 multiletter control sequences out of 15000+600000
  15444 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1082,7 +1077,7 @@ mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/urw/times/utmr8a.pfb>
-Output written on report.pdf (13 pages, 273260 bytes).
+Output written on report.pdf (13 pages, 267090 bytes).
 PDF statistics:
  155 PDF objects out of 1000 (max. 8388607)
  110 compressed objects within 2 object streams
