@@ -1,0 +1,1 @@
+data = readSalesFigures();[slope, coef] = runAnalysis(data, data.Bread);slopecoef
