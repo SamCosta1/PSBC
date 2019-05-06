@@ -1,0 +1,1 @@
+figure(1);plot(filteredTemps(indexesYr3), transformedSales(indexesYr3), "b*", ...     filteredTemps(indexesYr1And2), transformedSales(indexesYr1And2), "r*");     figure(2);plot(x, y, filteredDates, transformedSales, "r*");xlim([150 250]);
