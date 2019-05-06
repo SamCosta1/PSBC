@@ -1,1 +1,1 @@
-data = readSalesFigures();[slope, coef] = runAnalysis(data, data.Bread);slopecoef
+data = readSalesFigures();printRes = @(type, slope, coef) printf("%7s: Slope = %d; Correlation Coefficient = %d\n", type, slope, coef);    [slope, coef] = runAnalysis(data, data.Bread);printRes("Bread", slope, coef);[slope, coef] = runAnalysis(data, data.Lettuce);printRes("Lettuce", slope, coef);[slope, coef] = runAnalysis(data, data.Salad);printRes("Salad", slope, coef);
