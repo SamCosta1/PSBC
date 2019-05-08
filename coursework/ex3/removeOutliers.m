@@ -1,0 +1,2 @@
+function [dates, sales, temps] = removeOutliers(indexes,...,                                                filteredDates, ...                                                transformedSales, ...                                                filteredTemps)  sales = transformedSales(indexes);  dates = filteredDates(indexes);  temps = filteredTemps(indexes);    outliers = findOutliers(sales);  sales(outliers) = [];  dates(outliers) = [];  temps(outliers) = [];
+end
