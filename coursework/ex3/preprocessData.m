@@ -1,2 +1,2 @@
-function [datesPeriods, ...          salesPeriods, ...          maxTempPeriods] = preprocessData(data, salesData)    % Trim the start and end of the data set  dates = data.Days(4:end-1)';  sales = salesData(4:end-1);  maxTemp = data.MaxTemp(4:end-1);  % Transform the data into a matrix who's rows are periods  datesPeriods = reshape(dates, 7, [])';  salesPeriods = reshape(sales, 7, [])';  maxTempPeriods = reshape(maxTemp, 7, [])';
-endfunction
+function [datesPeriods, ...          salesPeriods, ...          maxTempPeriods] = preprocessData(data, salesData)    % Trim the start and end of the data set  dates = data.Days(4:end-1);  sales = salesData(4:end-1);  maxTemp = data.MaxTemp(4:end-1);  % Transform the data into a matrix who's rows are periods  datesPeriods = reshape(dates, 7, [])';  salesPeriods = reshape(sales, 7, [])';  maxTempPeriods = reshape(maxTemp, 7, [])';  
+end
