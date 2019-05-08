@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  8 MAY 2019 12:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.9)  8 MAY 2019 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -815,24 +815,24 @@ readarray: bounds checking OFF
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 32.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    ... okay on input line 32.
 ABD: EveryShipout initializing macros
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -930,11 +930,11 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -950,68 +950,132 @@ LaTeX Warning: Reference `sec:label' on page 1 undefined on input line 3.
 LaTeX Warning: Reference `fig:initial-plot' on page 1 undefined on input line 7
 .
 
-[1
+Package epstopdf Info: Source file: <initialPlot.eps>
+(epstopdf)                    date: 2019-05-08 14:42:17
+(epstopdf)                    size: 13796 bytes
+(epstopdf)             Output file: <initialPlot-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-08 14:43:19
+(epstopdf)                    size: 8173 bytes
+(epstopdf)             Command: <repstopdf --outfile=initialPlot-eps-converted-
+to.pdf initialPlot.eps>
+(epstopdf)             \includegraphics on input line 9.
+Package epstopdf Info: Output file is already uptodate.
+<initialPlot-eps-converted-to.pdf, id=4, 578.16pt x 433.62pt>
+File: initialPlot-eps-converted-to.pdf Graphic file (type pdf)
 
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(../preprocessData.m
+<use initialPlot-eps-converted-to.pdf>
+Package pdftex.def Info: initialPlot-eps-converted-to.pdf used on input line 9.
+
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+ [1
+
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (../pre
+processData.m
 LaTeX Font Info:    Try loading font information for TS1+pcr on input line 10.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-))
+)) [2 <./initialPlot-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `sec:preprocess' on page 2 undefined on input line 53.
-
-
-[2]
-
-LaTeX Warning: Citation `squares' on page 3 undefined on input line 65.
+LaTeX Warning: Reference `sec:preprocess' on page 3 undefined on input line 55.
 
 
-LaTeX Warning: Reference `fig:slopes' on page 3 undefined on input line 83.
+
+LaTeX Warning: Citation `squares' on page 3 undefined on input line 67.
 
 
 LaTeX Warning: Reference `fig:slopesoutliers' on page 3 undefined on input line
- 83.
+ 85.
+
+Package epstopdf Info: Source file: <slopes.eps>
+(epstopdf)                    date: 2019-05-08 15:09:19
+(epstopdf)                    size: 14608 bytes
+(epstopdf)             Output file: <slopes-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-08 15:09:23
+(epstopdf)                    size: 8482 bytes
+(epstopdf)             Command: <repstopdf --outfile=slopes-eps-converted-to.pd
+f slopes.eps>
+(epstopdf)             \includegraphics on input line 87.
+Package epstopdf Info: Output file is already uptodate.
+<slopes-eps-converted-to.pdf, id=30, 578.16pt x 433.62pt>
+File: slopes-eps-converted-to.pdf Graphic file (type pdf)
+
+<use slopes-eps-converted-to.pdf>
+Package pdftex.def Info: slopes-eps-converted-to.pdf used on input line 87.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+Package epstopdf Info: Source file: <slopeoutliers.eps>
+(epstopdf)                    date: 2019-05-08 15:07:40
+(epstopdf)                    size: 21677 bytes
+(epstopdf)             Output file: <slopeoutliers-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-08 15:07:50
+(epstopdf)                    size: 9861 bytes
+(epstopdf)             Command: <repstopdf --outfile=slopeoutliers-eps-converte
+d-to.pdf slopeoutliers.eps>
+(epstopdf)             \includegraphics on input line 89.
+Package epstopdf Info: Output file is already uptodate.
+
+<slopeoutliers-eps-converted-to.pdf, id=31, 578.16pt x 433.62pt>
+File: slopeoutliers-eps-converted-to.pdf Graphic file (type pdf)
+
+<use slopeoutliers-eps-converted-to.pdf>
+Package pdftex.def Info: slopeoutliers-eps-converted-to.pdf used on input line 
+89.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
 
 
-LaTeX Warning: Citation `tukey' on page 3 undefined on input line 87.
+LaTeX Warning: Citation `tukey' on page 3 undefined on input line 93.
+
+[3] [4 <./slopes-eps-converted-to.pdf> <./slopeoutliers-eps-converted-to.pdf>]
+
+LaTeX Warning: Citation `tukey2' on page 5 undefined on input line 104.
 
 
-LaTeX Warning: Citation `tukey2' on page 3 undefined on input line 98.
+LaTeX Warning: Reference `fig:slopesoutliers' on page 5 undefined on input line
+ 104.
+
+(../preprocessData.m)
+
+LaTeX Warning: Reference `fig:avgslope' on page 5 undefined on input line 114.
+
+[5]
+Package epstopdf Info: Source file: <transformed.eps>
+(epstopdf)                    date: 2019-05-08 15:05:05
+(epstopdf)                    size: 31327 bytes
+(epstopdf)             Output file: <transformed-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-08 15:05:13
+(epstopdf)                    size: 13233 bytes
+(epstopdf)             Command: <repstopdf --outfile=transformed-eps-converted-
+to.pdf transformed.eps>
+(epstopdf)             \includegraphics on input line 120.
+Package epstopdf Info: Output file is already uptodate.
+ <transformed-eps-converted-to.pdf, id=53, 578.16pt x 433.62pt>
+File: transformed-eps-converted-to.pdf Graphic file (type pdf)
+
+<use transformed-eps-converted-to.pdf>
+Package pdftex.def Info: transformed-eps-converted-to.pdf used on input line 12
+0.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
 
 
-LaTeX Warning: Reference `fig:slopesoutliers' on page 3 undefined on input line
- 98.
-
-(../preprocessData.m [3])
-
-LaTeX Warning: Reference `fig:avgslope' on page 4 undefined on input line 108.
+LaTeX Warning: Reference `fig:tempbyproducts' on page 6 undefined on input line
+ 122.
 
 
-LaTeX Warning: Reference `fig:transformed' on page 4 undefined on input line 11
-2.
+LaTeX Warning: Reference `lst:results' on page 6 undefined on input line 124.
 
-
-LaTeX Warning: Reference `fig:tempbyproducts' on page 4 undefined on input line
- 114.
-
-
-LaTeX Warning: Reference `lst:results' on page 4 undefined on input line 116.
-
-) [4] [5] (./report.aux)
+) [6 <./transformed-eps-converted-to.pdf>] (./report.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19532 strings out of 492995
- 386139 string characters out of 6132705
- 485621 words of memory out of 5000000
- 22603 multiletter control sequences out of 15000+600000
+ 19569 strings out of 492995
+ 386871 string characters out of 6132705
+ 484710 words of memory out of 5000000
+ 22623 multiletter control sequences out of 15000+600000
  12695 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,15n,67p,809b,1533s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,15n,67p,808b,1281s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/tex
@@ -1027,10 +1091,10 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf
 dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (5 pages, 160441 bytes).
+Output written on report.pdf (6 pages, 189519 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 107 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

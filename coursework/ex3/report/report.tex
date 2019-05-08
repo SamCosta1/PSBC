@@ -16,11 +16,25 @@
 \usepackage{verbatimbox}
 \newcommand{\inlinemaketitle}{{\let\newpage\relax\maketitle}}
 
+\newcommand{\fig}[4]{
+
+\begin{figure} 
+    \centering
+    \includegraphics[scale = #4]{#1}
+    \caption{#2}
+    \label{#3}
+\end{figure}
+
+
+}
+
 \title{PSBC Project 3}
 \begin{document}
 
 \inlinemaketitle
 \section{Introduction}
+
+
 
 This report details the approach and implementation relating to the second coursework project of MATH36032. Please note that all programming and testing was carried out using GNU Octave rather than MATLAB.
 

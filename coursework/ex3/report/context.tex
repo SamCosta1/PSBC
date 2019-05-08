@@ -1,10 +1,12 @@
-The goal of this project was to examine a dataset concerning the sales figures of three products; Bread, Salad and Lettuce. Our main aim was to determine whether there exists a correlation between the temperature of a given day, and the amount of each product was sold. In subsequent sections, we will describe our implementation using the ``Bread" dataset for reference, then run the code over the other two.
+The goal of this project was to examine a dataset concerning the sales figures of three products; Bread, Salad and Lettuce. Our main aim was to determine whether there exists a correlation between the temperature of a given day, and the amount of each product was sold. In subsequent sections, we will describe our implementation using the ``Bread" dataset for reference.
 
 \section{Preprocessing the data}\ref{sec:label}
 
 The first, simplest preprocessing of the data performed was to avoid working with date strings since this involves working with cell arrays, which are harder to manipulate than vectors and matrices. Instead, each date $d$ was be represented as the number of days between \texttt{31/12/2014} and $d$.
 
 Let us plot a few weeks worth of data and examine the results (shown in Figure \ref{fig:initial-plot}. We can immediately observe that the data exhibits a periodic trend, with each period being seven days long. Since we are aiming to discover a correlation between temperature and sales, we will need to filter out this periodic effect. For this reason, our analysis will focus heavily on these periods.
+
+\fig{initialPlot}{Sales data for bread during a part of 2015.}{fig:initial}{0.5}
 
 To simplify our data analysis, apply a transformation to each relevant column from the initial data. This transform transforms the flat list of values to a matrix whose rows represent periods. Since our periods are seven days long, our matrices each have seven columns.
 
@@ -82,6 +84,10 @@ c
 
 Figure \ref{fig:slopes} shows the results of this computation for the Bread data, performed on the first few periods which shows promising results for estimating the slopes. Figure \ref{fig:slopesoutliers} shows all the slopes and reveals evident outliers highlighted in red. We will discuss the approach to identifying outliers next.
 
+\fig{slopes}{Sales data for bread during a part of 2015 showing the lines of best fit.}{fig:slopes}{0.5}
+
+\fig{slopeoutliers}{The slopes for each period with the outliers highlighted in red.}{fig:slopeoutliers}{0.5}
+
 \subsection{Identifying and eliminating outliers}
 
 Tukey fences \cite{tukey} is the method used to identify the periods which are outliers.  It relies on the computation of quartiles in the data, (the data here being the list of slopes).
@@ -95,13 +101,13 @@ $$
 s_i > Q_3 + 1.5 \times IQR .
 $$
 
-The number 1.5 was a number used initially in this context by John Tukey \cite{tukey2} since it was effective in many applications. In our case, the figure 1.5 works well, evident when we plot the results as shown in Figure \ref{fig:slopesoutliers} (this is similarly effective for the other two products). Outliers are identified correctly. Now that this is done, we can take the mean of the remaining values to obtain the value we need. Listing \ref{lst:outliers} shows the code used to identify outliers. Note, the preprocessing of the data now makes it very easy to eliminate entire periods of data (those with slopes that are outliers) in the next part of our analysis by removing the corresponding rows of the data matricies which is a simple operation.
+The number 1.5 was a number used initially in this context by John Tukey \cite{tukey2} since it was effective in many applications. In our case, the figure 1.5 works well, evident when we plot the results as shown in Figure \ref{fig:slopesoutliers} (this is similarly effective for the other two products). Outliers are identified correctly. Now that this is done, we can take the mean of the remaining values to obtain the value we need. Listing \ref{lst:outliers} shows the code used to identify outliers. Note, the preprocessing of the data now makes it very easy to eliminate entire periods of data (those with slopes that are outliers) in the next part of our analysis by removing the corresponding rows of the data matrices which is a simple operation.
 
 \lstinputlisting[label={lst:outliers}, caption={A function to identify outliers in a column of data}] {../preprocessData.m}
 
 \section{Computing the correlation coefficient}
 
-Now that we have a mechanism of computing the slope for a given product we can use it to filter out the periodic effect in order to gain insight into the correlation between temperature and sales. Denote this common slope by $\mu$. Note that from now on we will be working with data that omits the periods whose slopes are outliers. 
+Now that we have a mechanism of computing the slope for a given product we can use it to filter out the periodic effect in order to gain insight into the correlation between temperature and sales. Denote this common slope by $\mu$. Note that from now on we will be working with data that omits the periods whose slopes are outliers. We will also omit data for days whose temperature is below 10 $\deg$ celsius to improve results.
 
 Our aim now is to define a transformation $T$ on the sales data such that the transformed data exhibits trends unaffected by the day of the week, i.e. data which is independent of the periodic effect. To achieve this we make the following observation. For a given period, the deviation of a specific data point from the mean for that period is dependent on two things: temperature and day of the week. 
 
@@ -109,17 +115,19 @@ Let us first define the mean for the period. Here our x-axis is the date and the
 
 $$ T(p_i) = \overline{p} + \delta_i $$.
 
-Figure \ref{fig:transformed} shows the data for the first few periods as well as the transformed data. It is clear the periodic effect is largely eliminated. Applying the transformation $T$ to each period and concatinating the results now gives a flat list of transformed values. By flattening the temperature matrix $M$ we now have data of a form that can be processed by the \texttt{corrcoef} command to compute a correlation coefficient. Flattening the matrices consists of taking each row and forming a vector by concatenating them.
+Figure \ref{fig:transformed} shows the data for the first few periods as well as the transformed data. It is clear the periodic effect is largely eliminated. Applying the transformation $T$ to each period and concatenating the results now gives a flat list of transformed values. By flattening the temperature matrix $M$ we now have data of a form that can be processed by the \texttt{corrcoef} command to compute a correlation coefficient. Flattening the matrices consists of taking each row and forming a vector by concatenating them.
 
-However, Figure \ref{fig:tempbyproducts} shows the results of plotting the transformed data against the temperature data. Clearly, there are two separate correlations, in investigating this, it appears sales data spiked in the third year, a trend not related to the temperature. To mitigate this we compute two correlation coefficient, one for the third year and one for the other two. Of course, in computing their mean it is vital to weight the first coefficient twice as much as the second.
+\fig{transformed.eps}{Sales data for bread during a part of 2015 showing the transformed sales data.}{fig:transformed}{0.5}
+
+However, Figure \ref{fig:tempbyproducts} shows the results of plotting the transformed data against the temperature data. Clearly, there are two separate correlations, in investigating this, it appears sales data spiked in the third year, a trend not related to the temperature. In order to mitigate this we no
 
 The results of our analysis are below in Listing \ref{lst:results}, having run the analysis on each product data.
 
 \begin{verbatim}
 >> main
-  Bread: Slope = 17.1303; Correlation Coefficient = 0.769772
-Lettuce: Slope = 23.0191; Correlation Coefficient = 0.7539
-  Salad: Slope = 11.8209; Correlation Coefficient = 0.63174
+  Bread: Slope = 17.1303; Correlation Coefficient = 0.774382
+Lettuce: Slope = 23.0191; Correlation Coefficient = 0.804459
+  Salad: Slope = 11.8209; Correlation Coefficient = 0.748916
 \end{verbatim}
 
  
