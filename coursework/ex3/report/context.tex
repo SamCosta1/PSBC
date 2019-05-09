@@ -4,9 +4,9 @@ The goal of this project was to examine a dataset concerning the sales figures o
 \centering
 \begin{verbatim}
 Date      MaxTemp     MinTemp     Bread     Salad     Lettuce
-1/1/2015       13           8       748		      424		       1125
-2/1/2015       11           2       733		      410		       1066
-3/1/2015       5           -1       744		      404		       1085
+1/1/2015       13           8       748              424               1125
+2/1/2015       11           2       733              410               1066
+3/1/2015       5           -1       744              404               1085
 \end{verbatim}
 \end{figure}
 
@@ -20,18 +20,18 @@ Let us plot a few weeks worth of data and examine the results (shown in Figure \
 
 \fig{initialPlot}{Sales data for bread during a part of 2015.}{fig:initial}{0.5}
 
-To simplify our data analysis, we apply a transformation to each relevant column from the initial data. This transform transforms the flat list of values into a matrix whose rows represent periods. Since our periods are seven days long, our matrices each have seven columns.
+To simplify our data analysis, we apply a transformation to each relevant column from the initial data. These columns are the sales data, the maximum temperature and the dates. This transform transforms the flat list of values into a matrix whose rows represent periods. Since our periods are seven days long, our matrices each have seven columns.
 
 For example, consider a column vector 
 
 \begin{align}
-   v &= \begin{bmatrix}
+   v &= \begin{pmatrix}
            v_{1} \\
            v_{2} \\
            \vdots \\
            v_{7m}
-         \end{bmatrix}
-  \end{align}.
+         \end{pmatrix}.
+  \end{align}
 
 Under this transform $v$ becomes
 
@@ -44,28 +44,28 @@ Under this transform $v$ becomes
 \end{bmatrix}
 \]
 
-Of course, this assumes that the number of data entries is a multiple of seven. In order to ensure this is the case, we cut off the leading and trailing data points which are not part of a whole period. Listing \ref{lst:preprocess} shows the practical implementation of this idea.
+Of course, this assumes that the number of data entries is a multiple of seven. In order to ensure this is the case, we cut off the leading and trailing data points from the original data set which are not part of a whole period. Listing \ref{lst:preprocess} shows the practical implementation of this idea.
+
+The benefit of this approach will become apparent when we need to perform operations on each period, with the data in this form it is easy to iterate over rows of the matrix rather than calculate indexes for the periods in the flat data (which becomes tedious when deleting whole periods, something we will need to do shortly).
 
  \lstinputlisting[label={lst:preprocess}, caption={A function to transform a flat data column into a matrix whose rows represent periods.}] {../preprocessData.m}
 
 \section{Examining the period slope}
 
-The first step towards computing the correlation we seek is to examine the slope of the periods in the data. For this analysis, we will assume that the slope of each period is equal (for each product), though the average for this period may vary. In order to compute the common slope, we will compute the slope of each period and take their average after eliminating any outliers.
+The first step towards computing the correlation we seek is to examine the slope of the periods in the data. For this analysis, we will assume that the slope of each period is equal (for each product), though the average in each period may vary. In order to compute the common slope, we will compute the slope of each period and take their average after eliminating any outliers.
 
 For each product, we have a matrix representing its sales data which we will denote $P$, a result of our preprocessing step. It is defined as follows.
 
 \begin{align}
-   v &= \begin{bmatrix}
+   v &= \begin{pmatrix}
            \underline{p_{1}} \\
            \underline{p_{2}} \\
            \vdots \\
-           \underline{p_{n}}
-         \end{bmatrix}
-  \end{align}.
+           \underline{p_{7}}
+         \end{pmatrix}.
+  \end{align}
 
-Where $\underline{p_i}$ is a vector of the seven sales data points for period $i$. Similarly, we have a matrix $D$, where each row $d_i$ contains date values for the period $i$, indexed as described in Section \ref{sec:preprocess}.
-
-Least square fitting was used to compute the slope of the data for each period. However, there are certain days throughout the dataset whose sales figures are zero; these must be omitted from our calculations. For ease of notation let $p = [p_1 \dots p_k]$ be the product sales data for an arbitrary period and $d = [d_1 \dots d_k]$ the corresponding dates after dates whose sales data is zero have been removed (so $k \leq 7$). This approach uses the following two equations to compute the slope $m$ and intercept $c$. 
+Where $\underline{p_i}$ is a vector of the seven sales data points for period $i$. Similarly, we have a matrix $D$, where each row $\underline{d_i}$ contains date values for the period $i$, indexed as described in Section \ref{sec:preprocess}. Least square fitting was used to compute the slope of the data for each period. However, there are certain days throughout the dataset whose sales figures are zero; these must be omitted from our calculations. For ease of notation let $p = [p_1 \dots p_k]$ be the product sales data and $d = [d_1 \dots d_k]$ the corresponding dates for an arbitrary period after dates whose sales data is zero have been removed (so $k \leq 7$). We can now use the following two equations to compute the slope $m$ and intercept $c$ of a line of best fit for the period data. 
 
 $$
 m\sum_{j = 1}^{k} d_{j}^2 + c\sum_{j = 1}^{k} d_{j} = m\sum_{j = 1}^{k} d_{j} \times p_{j}
@@ -75,7 +75,7 @@ $$
 m\sum_{j = 1}^{k} d_{j} + c\sum_{j = 1}^{k} 1 = m\sum_{j = 1}^{k}  p_{j}
 $$
 
-These equations are derived from equations described by S.J Miller \cite{squares}. Notice that to compute of $m$ and $c$ we can express the above equation in matrix form as follows. This allows the system to be solved easily in Octave.
+These equations are derived from equations described by S.J Miller \cite{squares}. Notice that to compute of $m$ and $c$ we can express the above equation in matrix form as follows. The system can now be solved easily in Octave.
 
 \[
 \begin{bmatrix}
@@ -93,7 +93,7 @@ c
 \end{bmatrix}
 \]
 
-Figure \ref{fig:slopes} shows the results of this computation for the Bread data, performed on the first few periods which shows promising results for estimating the slopes. Figure \ref{fig:slopesoutliers} shows all the slopes and reveals evident outliers highlighted in red. We will discuss the approach to identifying outliers next.
+Figure \ref{fig:slopes} shows the results of this computation for the Bread data, performed on the first few periods which shows promising results for estimating the slopes. 
 
 \fig{slopes}{Sales data for bread during a part of 2015 showing the lines of best fit.}{fig:slopes}{0.5}
 
@@ -101,7 +101,7 @@ Figure \ref{fig:slopes} shows the results of this computation for the Bread data
 
 \subsection{Identifying and eliminating outliers}
 
-Tukey fences \cite{tukey} is the method used to identify the periods whose slopes are outliers.  It relies on the computation of quartiles in the data, (the data here being the list of slopes).
+It is clear that some periods have very different slopes to the others. Figure \ref{fig:slopeoutliers} shows all the slopes and reveals evident outliers highlighted in red. To identify these outliers Tukey fences \cite{tukey} were used. This approach relies on the computation of quartiles in the data, (the data here being the list of slopes).
 
 This is a reasonably simple method; we work out the first and third quartiles in the data and denote them $Q_1$ and $Q_3$ respectively. Denote the interquartile range ($Q_3 - Q_1$)  as $IQR$ and the slope for period $i$ as $s_i$. Now we define outliers to be all the slopes $s_i$ such that either of the following holds:
 
@@ -112,23 +112,28 @@ $$
 s_i > Q_3 + 1.5 \times IQR .
 $$
 
-The number 1.5 was a number used initially in this context by John Tukey \cite{tukey} since it was effective in many applications. In our case, the figure 1.5 works well, evident when we plot the results as shown in Figure \ref{fig:slopeoutliers} (this is similarly effective for the other two products). Outliers are identified correctly. Now that this is done, we can take the mean of the remaining values to obtain the value we need. Listing \ref{lst:outliers} shows the code used to identify outliers. Note, the preprocessing of the data now makes it very easy to eliminate entire periods of data (those with slopes that are outliers) in the next part of our analysis by removing the corresponding rows of the data matrices which is a simple operation.
+The number 1.5 was a number used initially in this context by John Tukey \cite{tukey} since it was effective in many applications. In our case, the figure 1.5 works well, evident when we plot the results as shown in Figure \ref{fig:slopeoutliers} (this is similarly effective for the other two products). Outliers are identified correctly. Now that this is done, we can take the mean of the remaining values to obtain the value we need, from here on we will denote this value $\mu$. Listing \ref{lst:outliers} shows the code used to identify outliers. Note, the preprocessing of the data now makes it very easy to eliminate entire periods of data (those with slopes that are outliers) in the next part of our analysis by removing the corresponding rows of the data matrices which is a simple operation.
 
-\lstinputlisting[label={lst:outliers}, caption={A function to identify outliers in a column of data}] {../preprocessData.m}
+\lstinputlisting[label={lst:outliers}, caption={A function to identify outliers in a column of data}] {../findOutliers.m}
 
 \section{Computing the correlation coefficient}
 
-Now that we have a value for the period slope $\mu$, of a given product we can use it to filter out the periodic effect in order to gain insight into the correlation between temperature and sales. Note that from now on we will be working with data that omits the periods whose slopes are outliers. We will also omit data for days whose temperature is below 10 $\deg$ celsius to improve results.
+Now that we have a value for the period slope $\mu$, of a given product we can use it to filter out the periodic effect in order to gain insight into the correlation between temperature and sales. Note that from now on we will be working with data that omits the periods whose slopes are outliers. We will also omit data for days whose temperature is below 10 degrees Celsius to improve results.
 
 Our aim now is to define a transformation $T$ on the sales data such that the transformed data exhibits trends unaffected by the day of the week, i.e. data which is independent of the periodic effect. To achieve this, we make the following assumption. For a given period, the deviation of a specific data point from the mean for that period is dependent on two things: temperature and day of the week. 
 
+\begin{figure}
+\centering
 \input{graph}
+\caption{A visualisation of the values used in defining the transformation T.}
+\label{fig:slopestik}
+\end{figure}
 
-Let us first define the mean for the period. Here our x-axis is the date and the y-axis is the sales data. Define the sales data $\underline{p}$ and dates $\underline{d}$ as before. We can represent the mean point by $(\overline{d}, \overline{p})$. We can define a line of expected sales values as passing through this mean point with slope $\mu$. This line is shown in blue in Figure \ref{fig:avgslope}. By computing the difference, $\delta_i$ between the expected sales value $ex_{p_i}$ at date $d_i$ we obtain the variation based on temperature, not the period. It follows from our assumption that the sum of the mean and these $\delta_i$ values will be independent of the period; hence we can define our transform as follows.
+Let us first define the mean for the period. Here our x-axis is the date and the y-axis is the sales data. Define the sales data $\underline{p}$ and dates $\underline{d}$ as before. We can represent the mean point by $(\overline{d}, \overline{p})$. We can define a line of expected sales values as passing through this mean point with slope $\mu$. This line is shown in blue in Figure \ref{fig:slopestik}. By computing the difference, $\delta_i$ between the expected sales value $ex_{p_i}$ at date $d_i$ we obtain the variation based on temperature, not the period. It follows from our assumption that the sum of the mean and these $\delta_i$ values will be independent of the period; hence we can define our transform as follows.
 
-$$ T(p_i) = \overline{p} + \delta_i $$.
+$$ T(p_i) = \overline{p} + \delta_i .$$
 
-Figure \ref{fig:transformed} shows the data for the first few periods as well as the transformed data. It is clear that the periodic effect is largely eliminated. Applying the transformation $T$ to each period and concatenating the results now gives a flat list of transformed values. By flattening the temperature matrix $M$ we now have data of a form that can be processed by the \texttt{corrcoef} command to compute a correlation coefficient. Flattening the matrices consists of taking each row and forming a vector by concatenating them.
+Figure \ref{fig:transformed} shows the data for the first few periods as well as the transformed data. It is clear that the periodic effect is mostly eliminated. Applying the transformation $T$ to each period and concatenating the results now gives a flat list of transformed values. By flattening the temperature matrix $M$ we now have data of a form that can be processed by the \texttt{corrcoef} command to compute a correlation coefficient. Flattening the matrices consists of taking each row and forming a vector by concatenating them.
 
 \fig{transformed.eps}{Sales data for bread during a part of 2015 showing the transformed sales data.}{fig:transformed}{0.5}
 
@@ -146,5 +151,8 @@ Finally, the \texttt{corrcoef} command can be used on the normalised data as sho
 Lettuce: Slope = 23.0191; Correlation Coefficient = 0.804459
   Salad: Slope = 11.8209; Correlation Coefficient = 0.748916
 \end{verbatim}
+
+
+\lstinputlisting[label={lst:computeCorrelationCoef}, caption={A function to calculate the correlation coefficients}] {../computeCorrelationCoef.m}
 
 The glue code which calls these functions for each product is all included in the listings in Appendix \ref{appendix:code}.
