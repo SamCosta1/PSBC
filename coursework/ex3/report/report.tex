@@ -1,6 +1,7 @@
 \documentclass[10pt]{article}
 \usepackage{tkz-euclide}
 \usetkzobj{all}
+\usepackage{url}
 \usetikzlibrary{arrows.meta}
 \usepackage[title]{appendix}
 \usepackage{amssymb}
@@ -40,13 +41,23 @@ This report details the approach and implementation relating to the second cours
 
 \section{Context}
 
+
 \input{context}
 
 \begin{appendices}
 
-\section{Distance}\label{ap:distance}
-% \lstinputlisting[label={lst:distance}, caption={A function to compute the distance between two points.}] {../distance.m}
+\section{Code}\label{appendix:code}
+ \lstinputlisting[label={lst:main}, caption={The code that runs the analysis for the seperate products and prints results.}] {../main.m}
+
+ \lstinputlisting[label={lst:runAnalysis}, caption={A function to run the analysis on the data for a single product.}] {../runAnalysis.m}
+ 
+  
+   \lstinputlisting[label={lst:readSalesFigures}, caption={A function to read the data from the csv file.}] {../readSalesFigures.m}
+
 
 \end{appendices}
+
+\bibliographystyle{unsrt}
+\bibliography{bibfile}
 
 \end{document}
