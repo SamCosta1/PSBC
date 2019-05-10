@@ -4,9 +4,9 @@ The goal of this project was to examine a dataset concerning the sales figures o
 \centering
 \begin{verbatim}
 Date      MaxTemp     MinTemp     Bread     Salad     Lettuce
-1/1/2015       13           8       748              424               1125
-2/1/2015       11           2       733              410               1066
-3/1/2015       5           -1       744              404               1085
+1/1/2015       13           8       748       424        1125
+2/1/2015       11           2       733       410        1066
+3/1/2015       5           -1       744       404        1085
 \end{verbatim}
 \end{figure}
 
@@ -14,9 +14,9 @@ Our main aim was to determine whether there exists a correlation between the max
 
 \section{Preprocessing the data}\label{sec:preprocess}
 
-The first, simplest preprocessing of the data performed was to avoid working with date strings since this involves working with cell arrays, which are harder to manipulate than vectors and matrices. Instead, each date $d$ was represented as the number of days between \texttt{31/12/2014} and $d$.
+The first, simplest preprocessing action performed on the data was to avoid working with date strings since this involves working with cell arrays, which are more tiresome to manipulate than vectors and matrices in Octave. Instead, each date $d$ was represented as the number of days between \texttt{31/12/2014} and $d$. For example, \texttt{01/01/2015} is represented by the number $1$, from now on this is what we refer to as the ``dates". 
 
-Let us plot a few weeks worth of data and examine the results (shown in Figure \ref{fig:initial-plot}. We can immediately observe that the data exhibits a periodic trend, with each period being seven days long. Since we are aiming to discover a correlation between temperature and sales, we will need to filter out this periodic effect. For this reason, our analysis will focus heavily on these periods.
+Let us plot a few weeks worth of data and examine the results (shown in Figure \ref{fig:initial}). We can immediately observe that the data exhibits a periodic trend, with each period being seven days long. Since we are aiming to discover a correlation between temperature and sales, we will need to filter out this periodic effect. For this reason, our analysis will focus heavily on these periods.
 
 \fig{initialPlot}{Sales data for bread during a part of 2015.}{fig:initial}{0.5}
 
@@ -41,12 +41,12 @@ Under this transform $v$ becomes
     v_{8} & v_{9} & v_{10} & \dots  & v_{14} \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
     v_{7m-6} & v_{7m-5} & v_{7m -4} & \dots  & v_{7m}
-\end{bmatrix}
+\end{bmatrix}.
 \]
 
 Of course, this assumes that the number of data entries is a multiple of seven. In order to ensure this is the case, we cut off the leading and trailing data points from the original data set which are not part of a whole period. Listing \ref{lst:preprocess} shows the practical implementation of this idea.
 
-The benefit of this approach will become apparent when we need to perform operations on each period, with the data in this form it is easy to iterate over rows of the matrix rather than calculate indexes for the periods in the flat data (which becomes tedious when deleting whole periods, something we will need to do shortly).
+The benefit of this approach will become apparent when we need to perform operations on each period. With the data in this form, it is easy to iterate over rows of the matrix rather than calculate indexes for the periods in the flat data (which becomes tedious when deleting whole periods, something we will need to do shortly).
 
  \lstinputlisting[label={lst:preprocess}, caption={A function to transform a flat data column into a matrix whose rows represent periods.}] {../preprocessData.m}
 
@@ -65,7 +65,7 @@ For each product, we have a matrix representing its sales data which we will den
          \end{pmatrix}.
   \end{align}
 
-Where $\underline{p_i}$ is a vector of the seven sales data points for period $i$. Similarly, we have a matrix $D$, where each row $\underline{d_i}$ contains date values for the period $i$, indexed as described in Section \ref{sec:preprocess}. Least square fitting was used to compute the slope of the data for each period. However, there are certain days throughout the dataset whose sales figures are zero; these must be omitted from our calculations. For ease of notation let $p = [p_1 \dots p_k]$ be the product sales data and $d = [d_1 \dots d_k]$ the corresponding dates for an arbitrary period after dates whose sales data is zero have been removed (so $k \leq 7$). We can now use the following two equations to compute the slope $m$ and intercept $c$ of a line of best fit for the period data. 
+Where $\underline{p_i}$ is a vector of the seven sales data points for period $i$. Similarly, we have a matrix $D$, where each row $\underline{d_i}$ contains date values for the period $i$. Least square fitting was used to compute the slope of the data for each period. However, there are certain days throughout the dataset whose sales figures are zero; these must be omitted from our calculations. For ease of notation let $p = [p_1 \dots p_k]$ be the product sales data and $d = [d_1 \dots d_k]$ the corresponding dates for an arbitrary period after dates whose sales data is zero have been removed (so $k \leq 7$). We can now use the following two equations to compute the slope $m$ and intercept $c$ of a line of best fit for the period data. 
 
 $$
 m\sum_{j = 1}^{k} d_{j}^2 + c\sum_{j = 1}^{k} d_{j} = m\sum_{j = 1}^{k} d_{j} \times p_{j}
@@ -90,18 +90,25 @@ c
 \begin{bmatrix}
 \sum_{j = 1}^{7} d_{j} \times p_{j}\\
 \sum_{j = 1}^{7}  p_{j}
-\end{bmatrix}
+\end{bmatrix}.
 \]
 
-Figure \ref{fig:slopes} shows the results of this computation for the Bread data, performed on the first few periods which shows promising results for estimating the slopes. 
+Figure \ref{fig:slopes} shows the results of this computation for the Bread data, performed on the first few periods which shows promising results for estimating the slopes. The implementation of this idea is included in Listings \ref{lst:slopeAndIntercept} and \ref{lst:computePeriodSlopes}.
 
-\fig{slopes}{Sales data for bread during a part of 2015 showing the lines of best fit.}{fig:slopes}{0.5}
+   \fig{slopes}{Sales data for bread during a part of 2015 showing the lines of best fit.}{fig:slopes}{0.5}
 
-\fig{slopeoutliers}{The slopes for each period with the outliers highlighted in red.}{fig:slopeoutliers}{0.5}
+   \lstinputlisting[label={lst:slopeAndIntercept}, caption={A function to compute the slope and intercept for a given period.}] {../slopeAndIntercept.m}
+   
+   \lstinputlisting[label={lst:computePeriodSlopes}, caption={A function to compute the slopes of each period.}] {../computePeriodSlopes.m}
+
+
+
 
 \subsection{Identifying and eliminating outliers}
 
 It is clear that some periods have very different slopes to the others. Figure \ref{fig:slopeoutliers} shows all the slopes and reveals evident outliers highlighted in red. To identify these outliers Tukey fences \cite{tukey} were used. This approach relies on the computation of quartiles in the data, (the data here being the list of slopes).
+
+\figh{slopeoutliers}{The slopes for each period with the outliers highlighted in red.}{fig:slopeoutliers}{0.5}
 
 This is a reasonably simple method; we work out the first and third quartiles in the data and denote them $Q_1$ and $Q_3$ respectively. Denote the interquartile range ($Q_3 - Q_1$)  as $IQR$ and the slope for period $i$ as $s_i$. Now we define outliers to be all the slopes $s_i$ such that either of the following holds:
 
@@ -120,30 +127,34 @@ The number 1.5 was a number used initially in this context by John Tukey \cite{t
 
 Now that we have a value for the period slope $\mu$, of a given product we can use it to filter out the periodic effect in order to gain insight into the correlation between temperature and sales. Note that from now on we will be working with data that omits the periods whose slopes are outliers. We will also omit data for days whose temperature is below 10 degrees Celsius to improve results.
 
-Our aim now is to define a transformation $T$ on the sales data such that the transformed data exhibits trends unaffected by the day of the week, i.e. data which is independent of the periodic effect. To achieve this, we make the following assumption. For a given period, the deviation of a specific data point from the mean for that period is dependent on two things: temperature and day of the week. 
-
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \input{graph}
 \caption{A visualisation of the values used in defining the transformation T.}
 \label{fig:slopestik}
 \end{figure}
 
-Let us first define the mean for the period. Here our x-axis is the date and the y-axis is the sales data. Define the sales data $\underline{p}$ and dates $\underline{d}$ as before. We can represent the mean point by $(\overline{d}, \overline{p})$. We can define a line of expected sales values as passing through this mean point with slope $\mu$. This line is shown in blue in Figure \ref{fig:slopestik}. By computing the difference, $\delta_i$ between the expected sales value $ex_{p_i}$ at date $d_i$ we obtain the variation based on temperature, not the period. It follows from our assumption that the sum of the mean and these $\delta_i$ values will be independent of the period; hence we can define our transform as follows.
+Our aim now is to define a transformation $T$ on the sales data such that the transformed data exhibits trends unaffected by the day of the week, i.e. data which is independent of the periodic effect. To achieve this, we make the following assumption. For a given period, the deviation of a specific data point from the mean for that period is dependent on two things: temperature and day of the week. 
+
+
+
+Let us first define the mean for the period. Here our x-axis is the date, and the y-axis is the sales data. Define the sales data $\underline{p}$ and dates $\underline{d}$ as before. We can represent the mean point by $(\overline{d}, \overline{p})$. We can define a line of expected sales values as passing through this mean point with slope $\mu$. This line is shown in blue in Figure \ref{fig:slopestik}. By computing the difference, $\delta_i$ between the expected sales value $ex_{p_i}$ at date $d_i$ and the actual value, we obtain the variation based on temperature, not the period. It follows from our assumption that the sum of the mean and these $\delta_i$ values will be independent of the period; hence we can define our transform as follows.
 
 $$ T(p_i) = \overline{p} + \delta_i .$$
 
-Figure \ref{fig:transformed} shows the data for the first few periods as well as the transformed data. It is clear that the periodic effect is mostly eliminated. Applying the transformation $T$ to each period and concatenating the results now gives a flat list of transformed values. By flattening the temperature matrix $M$ we now have data of a form that can be processed by the \texttt{corrcoef} command to compute a correlation coefficient. Flattening the matrices consists of taking each row and forming a vector by concatenating them.
+Figure \ref{fig:transformed} shows the data for the first few periods as well as the transformed data. It is clear that the periodic effect is mostly eliminated. Applying the transformation $T$ to each period and concatenating the results now gives a flat list of transformed values. By flattening the temperature matrix $M$ we now have data of a form that can be processed by the \texttt{corrcoef} command to compute a correlation coefficient. Flattening the matrices consists of taking each row and forming a vector by concatenating them (essentially reversing the preprocessing step).
 
 \fig{transformed.eps}{Sales data for bread during a part of 2015 showing the transformed sales data.}{fig:transformed}{0.5}
 
 \fig{tempbyproducts.eps}{The temperature plotted against the normalised and transformed sales data.}{fig:tempbyproducts}{0.5}
 
+\figh{tempbynormalised.eps}{The temperature plotted against the normalised and transformed sales data.}{fig:tempbynormalised}{0.5}
+
 However, Figure \ref{fig:tempbyproducts} shows the results of plotting the transformed data against the temperature data. Clearly, there are two separate correlations, in investigating this, it appears sales data spiked in the third year, a trend not related to the temperature. Computing the correlation coefficient at this point would be ineffective for this reason. However, by splitting the data by year and normalising the data for the three years individually (after removing obvious outliers for each year), we eliminate the effect of the two separate correlations hinted at in Figure \ref{fig:tempbyproducts}. With this done we can plot the temperature against the normalised data and see a much clearer correlation as shown in Figure \ref{fig:tempbynormalised}.
 
-Finally, the \texttt{corrcoef} command can be used on the normalised data as shown in Listing \ref{lst:computeCorrelationCoef}. The results of our analysis are below having run the analysis on the data for each product.
+Finally, the \texttt{corrcoef} command can be used on the normalised data as shown in Listing \ref{lst:computeCorrelationCoef}. The results of our analysis are below (Figure 8) having run the analysis on the data for each product. The glue code which calls these functions for each product is all included in the Listings in Appendix \ref{appendix:code}.
 
-\fig{tempbynormalised.eps}{The temperature plotted against the normalised and transformed sales data.}{fig:tempbynormalised}{0.5}
+\begin{figure}[h!]
 
 \begin{verbatim}
 >> main
@@ -151,8 +162,12 @@ Finally, the \texttt{corrcoef} command can be used on the normalised data as sho
 Lettuce: Slope = 23.0191; Correlation Coefficient = 0.804459
   Salad: Slope = 11.8209; Correlation Coefficient = 0.748916
 \end{verbatim}
+\label{fig:output1}
+\caption{The overall results of the analysis.}
+\end{figure}
+
 
 
 \lstinputlisting[label={lst:computeCorrelationCoef}, caption={A function to calculate the correlation coefficients}] {../computeCorrelationCoef.m}
 
-The glue code which calls these functions for each product is all included in the listings in Appendix \ref{appendix:code}.
+

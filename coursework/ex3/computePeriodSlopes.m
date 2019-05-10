@@ -1,4 +1,4 @@
-function [slopes, intercepts] = computePeriodSlopes(datesPeriods, salesPeriods)
+function [slopes] = computePeriodSlopes(datesPeriods, salesPeriods)
   
   for periodIndex = 1:size(datesPeriods, 1)
     datesPeriod = datesPeriods(periodIndex, :);
